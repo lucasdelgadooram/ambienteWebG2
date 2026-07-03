@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#imgFondo {
+    opacity: 20%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+.container {
+    position: relative;
+    background: linear-gradient(180deg, #aadcfa, #9dd1f1);
+    /*Background color de la pagin(linear-gradient: 1:grados de color, todo lo demas son codigos de color*/
+    font-family: Arial, Helvetica, sans-serif;
+    /*Establece las fuentes*/
+    display: grid;
+    /*Alinea los elementos dentro de un contenedor de forma responsiva */
+    justify-content: column;
+    /*Pasa el contenido al centro de un contenedor*/
+    align-items: center;
+    /*Pasa los items a una posicion central*/
+    min-height: 100vh;
+    /*Establece que al menos este un 100% de altura de la ventana*/
+    /*padding: 450px;*/
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+}
+
+.primeraMitad{
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+}
+
+.segundaMitad{
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.card{
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.10);
+    width: 650px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px;
+    height: 100%;
+}
+
+.bottom-card {
+    padding-top: 35px;
+    padding-bottom: 25px;
+}
+
+.button {
+    width: 500px;
+    height: 50px;
+    border-radius: 4px;
+    background-color: #1499D6;
+    color: #ffffff;
+    border: none;
+    font-weight: bolder;
+    transition: 0.5s;
+    font-size: 16px;
+}
+
+.button:hover{
+    background-color: #D6006F;
+    transform: translateY(-4px);
+}
+
+.links{
+    padding: 35px;
+}
+
+a{
+    text-decoration: none;
+    color: #2e2e2e;
+    padding: 10px;
+    padding-left: 45px;
+    padding-top: 30px;
+    transition: 0.4s;
+}
+
+a:hover{
+    color: #D6006F;
+    transform: translateY(-4px);
+}
+
+input{
+    background-color: #b1b1b1;
+    opacity: 0.2;
+    display: flex;
+    width: 500px;
+    height: 50px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom:  2px solid #000000;
+    padding-left: 4px;
+}
+
+.topCard{
+    padding-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    padding-bottom: 10px;
+}

@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(180deg, #aadcfa, #9dd1f1);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#logo{
+    width: 65px;
+    height: 70px;
+    margin-left: 20px;
+}
+
+.navbar{
+    background-color: #77c7f8;
+}
+
+#userProfile{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+#comment{
+    margin-left: 20px;
+}
+
+#comment span{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#buscarBtn{
+    background-color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 14px;
+    width: 75px;
+    height: 40px;
+    padding: 2px;
+    transition: 0.3s;
+}
+
+.btnFooter{
+    background-color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+    padding: 2px;
+    transition: 0.3s;
+}
+
+.btnFooter:hover{
+    background-color: #ffe27a;
+    color: #000;
+    transform: translateY(-4px);
+}
+
+#buscarBtn:hover{
+    background-color: #ffe27a;
+    color: #000;
+    transform: translateY(-4px);
+}
+
+#barra{
+    border-radius: 50px;
+    width: 500px;
+}
+
+#barraBusqueda{
+    margin-left: 40px;
+}
+
+#correoUser{
+    color: #ffffff; 
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#correoUser:hover{
+    color: #ffe27a;
+    transform: translateY(-4px);
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.iconoNav{
+    font-size: 28px;
+    color: white;
+    transition: 0.3s;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.iconoNav:hover{
+    color: #ffe27a;
+}
+
+#secondNavbar{
+    background-color: #5cbffd;
+}
+
+#lista{
+    display: flex;
+    gap: 150px;
+}
+
+#lista li{
+    color: #ffffff;
+    padding: 4px;
+}
+
+.nav-item a{
+    color:#ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-item a:hover{
+    color:#ffe27a;
+    transform: translateY(-3px);
+}
+
+.dropdown-menu{
+    background-color: #5cbffd;
+}
+
+.Ofertas{
+    width: 100%;
+    height: 250px;
+    background-color: #D6006F;
+}
+
+.caracteristicas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 40px;
+}
+
+
+.item{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: 260px;
+}
+
+
+.circulo{
+    width: 70px;
+    height: 70px;
+    border: 2px solid #53b2f1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.circulo i{
+    font-size: 30px;
+    color: #53b2f1;
+    transition: 0.3s;
+}
+
+.item:hover .circulo{
+    background: #53b2f1;
+}
+
+.item:hover .circulo i{
+    color: white;
+}
+
+.texto h3{
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.texto p{
+    margin: 0;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cards{
+    display: flex;
+    gap: 100px;
+    margin-left: 100px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card{
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-4px);
+}
+
+.card img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 20px auto;
+}
+
+.card-title{
+    color: #3daaf3;
+}
+
+.btnCard{
+    background-color: #3daaf3;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btnCard:hover{
+    background-color: #ffe27a;
+    color: #000;
+    transform: translateY(-4px);
+}
+
+.Ofertas{
+    background-color: #D6006F;
+    width: 100%;
+    height: 200px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Ofertas h1{
+    font-size: 48px;
+    margin: 20px;
+}
+
+.Ofertas p{
+    margin-left: 10px;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.Ofertas button{
+    background: #ffe27a;
+    width: 150px;
+    color: #000000;
+    border: none;
+    padding: 14px;
+    border-radius: 40px;
+    font-size: 14px;
+    transition: 0.4s;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    margin-top: 100px;
+}
+
+.Ofertas button:hover{
+    transform: scale(1.05);
+    background: #f5cc37;
+}
+
+.bottomCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ofertaCard{
+    margin-left:110px;
+    background-color: #D6006F;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.contenedorF{
+    background-color: #276b97;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.pocoNosotros{
+    margin-right: 160px;
+    color: #ffffff;
+}
+
+.pocoNosotros h2{
+    font-weight: bolder;
+}
+
+.pocoNosotros h3{
+    font-weight: bold;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.derechosReservados{
+    padding: 10px;
+    background-color: #276b97;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.btnFooter{
+    margin-left: 8px;
+}
+
+.redesSociales{
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.redesSociales span{
+    font-weight: bold;
+}
+
+
+#redes{
+    margin-right: 100px;
+}
+
+#redes li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+#divide{
+    margin-right: 120px;
+    width: 1px;
+    height: 300px;
+    background-color: white;
+    border: none;
+}

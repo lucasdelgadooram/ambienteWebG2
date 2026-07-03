@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contenedor {
+   background: linear-gradient(180deg,#aadcfa,#9dd1f1);
+    /*Background color de la pagin(linear-gradient: 1:grados de color, todo lo demas son codigos de color*/
+    font-family: Arial, Helvetica, sans-serif;
+    /*Establece las fuentes*/
+    display: grid;
+    /*Alinea los elementos dentro de un contenedor de forma responsiva */
+    justify-content: column;
+    /*Pasa el contenido al centro de un contenedor*/
+    align-items: center;
+    /*Pasa los items a una posicion central*/
+    min-height: 100vh;
+    /*Establece que al menos este un 100% de altura de la ventana*/
+    /*padding: 450px;*/
+    padding-left: 350px;
+     position: relative;
+}
+
+/*Comentarios de las posiciones*/
+/*
+    Para poner algo por encima de algo se necesitan algunas propiedades de css, asi como: 
+    EL object-fit: cover, hace que ocupe toda la pantalla
+
+    Para que algo sobrepase o este encima de algo con el efecto de flotar se necesita de: 
+    Poisiticion: absolute y relative, ya que estos marcan referencias y mueven un objeto con algunos comandos.
+
+    Por ultimo el z-index controla que esta por encima de que cosas
+
+*/
+
+#imgFondo{
+    opacity: 20%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.cards-login {
+    position: relative;
+    z-index: 2;
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*Pasa el contenido al centro de un contenedor*/
+    align-items: center;
+    /*Pasa los items a una posicion central*/
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
+    margin-right: 25px;
+    min-height: 550px;
+    width: 550px;
+}
+
+.card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    border-radius: 12px;
+}
+
+.junto {
+    display: flex;
+}
+
+.junto span {
+    padding-right: 8px;
+}
+
+#siCuenta {
+    padding-left: 8px;
+}
+
+.correos,
+.claves {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-card {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    
+}
+
+.button {
+    width: 400px;
+    height: 50px;
+    border-radius: 4px;
+    background-color: #78d4ff;
+    color: #ffffff;
+    border: none;
+    font-weight: bolder;
+    transition: 0.5s;
+    font-size: 16px;
+}
+
+.button:hover{
+    background-color: #D6006F;
+    transform: translateY(-4px);
+}
+
+.links {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.links a{
+    text-decoration: none;
+    padding-left: 30px;
+    color: #4A4346;
+    font-size: 14px;
+    transition: 0.5s;
+}
+
+.links a:hover{
+    color: #D6006F;
+    text-decoration: underline; /*hace qeu se subraye*/
+}
+
+#email,
+#password, 
+#confirmar{
+    background-color: #b1b1b1;
+    opacity: 0.2;
+    display: flex;
+    width: 400px;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom:  2px solid #000000;
+    padding-left: 4px;
+}
+
+.medio {
+    padding-top: 30px;
+}
+
+.top {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: #78d4ff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding-top: 10px;
+}
+
+p{
+    color: #616161;
+    font-size: 14px;
+}
+
+span{
+    font-weight: bolder;
+}
+
+i{
+    color: #4A4346;
+    padding-right: 4px;
+}
+
+
+#politicas{
+    font-weight: bold;
+     color: #4A4346;
+}

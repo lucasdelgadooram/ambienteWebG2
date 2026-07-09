@@ -1,0 +1,185 @@
+/*Página y banner de presentación*/
+
+.historia{
+    padding:45px 7%;
+    background-color:#e8fbff;
+    background-image:
+        radial-gradient(#9bd0ff 18%, transparent 19%),
+        radial-gradient(#9bd0ff 18%, transparent 19%);
+    background-size:90px 90px;
+}
+
+
+.banner{
+    background:linear-gradient(135deg,#4daef5,#93d2ff);
+    border-radius:35px;
+    padding:50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:60px;
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+    margin-bottom:70px;
+}
+
+
+.subtitulo{
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.banner h1{
+    font-size:55px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.descripcion{
+    font-size:20px;
+    max-width:600px;
+    margin-bottom:35px;
+}
+
+.btnBanner{
+    padding:15px 35px;
+    background:white;
+    color:#4daef5;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:900;
+    transition:0.3s;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+.btnBanner:hover{
+    background:#ffe27a;
+    color:black;
+    transform:translateY(-4px);
+}
+
+.bannerImg{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    min-height:350px;
+}
+
+
+.bannerImg img{
+    transition:0.4s;
+}
+
+.bannerImg img:hover{
+    transform:scale(1.05);
+}
+
+.logoHistoria{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:white;
+    padding:20px;
+    object-fit:contain;
+    z-index:2;
+    box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+
+.imgHistoria{
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    object-fit:cover;
+    position:absolute;
+    right:40px;
+    bottom:15px;
+    border:8px solid white;
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+
+/*Cartas de los valores, casi que es un copie y pegue en cierta forma*/
+
+.proposito{
+    margin-bottom:70px;
+}
+
+.nuestroProposito{
+    text-align:center;
+    max-width:750px;
+    margin:auto;
+    margin-bottom:50px;
+}
+
+.nuestroProposito span{
+    color:#2fa2f5;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+.nuestroProposito h2{
+    font-size:48px;
+    color:#204b88;
+    font-weight:900;
+}
+
+.nuestroProposito p{
+    font-size:18px;
+    color:#555;
+}
+
+/*El grid template columns es importante para dejar espacios y repeticiones*/
+.cardsProposito{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
+}
+
+.cardValores{
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    transition:0.3s;
+}
+
+.cardValores:hover{
+    transform:translateY(-5px);
+}
+
+.cardValores img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.cardBody{
+    padding:30px;
+}
+
+.cardBody h3{
+    font-size:30px;
+    color:#204b88;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.cardBody p{
+    color:#555;
+    text-align:justify;
+}
+
+
+.cardValores:hover img{
+    transform:scale(1.02);
+}
+
+.cardValores img{
+    transition:0.4s;
+}
+
+
+

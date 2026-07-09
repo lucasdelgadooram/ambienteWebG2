@@ -1,0 +1,178 @@
+.sobreNosotros{
+    padding:45px 7%;
+    background-color:#e8fbff;
+    background-image:
+        radial-gradient(#9bd0ff 18%, transparent 19%),
+        radial-gradient(#9bd0ff 18%, transparent 19%);
+    background-size:90px 90px;
+}
+
+
+.banner{
+    background:linear-gradient(135deg,#4daef5,#93d2ff);
+    border-radius:35px;
+    padding:50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:60px;
+    color:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+    margin-bottom:70px;
+}
+
+
+.subtitulo{
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.banner h1{
+    font-size:55px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.descripcion{
+    font-size:20px;
+    max-width:600px;
+    margin-bottom:35px;
+}
+
+.btnBanner{
+    padding:15px 35px;
+    background:white;
+    color:#4daef5;
+    text-decoration:none;
+    border-radius:40px;
+    font-weight:900;
+    transition:0.3s;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+.btnBanner:hover{
+    background:#ffe27a;
+    color:black;
+    transform:translateY(-4px);
+}
+
+.bannerImg{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    min-height:350px;
+}
+
+
+.bannerImg img{
+    transition:0.4s;
+}
+
+.bannerImg img:hover{
+    transform:scale(1.02);
+}
+
+
+.logoHistoria{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:white;
+    padding:20px;
+    object-fit:contain;
+    z-index:2;
+    box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
+
+.imgHistoria{
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    object-fit:cover;
+    position:absolute;
+    right:40px;
+    bottom:15px;
+    border:8px solid white;
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+}
+
+.historiaTiempo{
+    margin:80px 0;
+}
+
+.tituloTiempo{
+    max-width:750px;
+    margin:0 auto 55px;
+    text-align:center;
+}
+
+.tituloTiempo span{
+    display:inline-block;
+    color:#4daef5;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.tituloTiempo h2{
+    font-size:48px;
+    font-weight:900;
+    color:#204b88;
+    margin-bottom:20px;
+}
+
+.tituloTiempo p{
+    font-size:18px;
+    color:#555;
+}
+
+.cartas{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
+}
+
+.carta{
+    background:white;
+    border-radius:30px;
+    padding:35px 30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    border-top:8px solid #4daef5;
+    transition:0.3s;
+}
+
+.carta:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
+}
+
+.anio{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#4daef5,#93d2ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:28px;
+    font-weight:900;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+.carta h3{
+    font-size:28px;
+    color:#204b88;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.carta p{
+    color:#555;
+    font-size:17px;
+}

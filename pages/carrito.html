@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Paluse</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/indexStyles.css">
+    <link rel="stylesheet" href="../css/carritoStyles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <a href="../index.html">
+                    <img src="../resources/logoPaluseNew.png" id="logo" alt="Logo Paluse">
+                </a>
+
+                <div id="comment">
+                    <span>Envios en todo Costa Rica</span>
+                    <i class="fa-solid fa-truck iconoNav"></i>
+                </div>
+
+                <div class="collapse navbar-collapse show">
+                    <form class="d-flex" role="search" id="barraBusqueda">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" id="barra">
+                        <button class="btn btn-outline-" type="button" id="buscarBtn">Buscar</button>
+                    </form>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-heart iconoNav"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="./carrito.html"><i class="fa-solid fa-cart-shopping iconoNav"></i></a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./login.html">
+                                <img src="../resources/profileImg.jpg" id="userProfile" alt="Usuario">
+                                <span id="correoUser"> usuario1@gmail.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="carrito-page">
+
+        <section class="carrito-titulo">
+            <a href="./catalogo.html">
+                <i class="fa-solid fa-arrow-left"></i> Seguir comprando
+            </a>
+            <h1>Mi carrito de compras</h1>
+            <p>Revisa los productos seleccionados antes de finalizar tu pedido.</p>
+        </section>
+
+        <section class="carrito-contenedor">
+
+            <div class="lista-productos">
+
+                <article class="item-carrito">
+                    <img src="../resources/taza.jpeg" alt="Taza personalizada">
+
+                    <div class="item-info">
+                        <h3>Taza personalizada - 225 ml</h3>
+                        <p>Color blanco con diseño personalizado.</p>
+                        <span>Disponible</span>
+                    </div>
+
+                    <div class="cantidad-control">
+                        <button>-</button>
+                        <strong>1</strong>
+                        <button>+</button>
+                    </div>
+
+                    <div class="precio-item">
+                        <strong>₡8500</strong>
+                        <button>
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="item-carrito">
+                    <img src="../resources/cajaDesplegable.jpg" alt="Caja personalizada">
+
+                    <div class="item-info">
+                        <h3>Caja de cartón personalizada</h3>
+                        <p>Caja con imagen a escoger.</p>
+                        <span>Disponible</span>
+                    </div>
+
+                    <div class="cantidad-control">
+                        <button>-</button>
+                        <strong>1</strong>
+                        <button>+</button>
+                    </div>
+
+                    <div class="precio-item">
+                        <strong>₡6000</strong>
+                        <button>
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <aside class="resumen-compra">
+                <h2>Resumen de compra</h2>
+
+                <div class="linea-resumen">
+                    <span>Subtotal</span>
+                    <strong>₡14500</strong>
+                </div>
+
+                <div class="linea-resumen">
+                    <span>Envío</span>
+                    <strong>Gratis</strong>
+                </div>
+
+                <div class="linea-resumen">
+                    <span>Descuento</span>
+                    <strong>₡0</strong>
+                </div>
+
+                <hr>
+
+                <div class="total-resumen">
+                    <span>Total</span>
+                    <strong>₡14500</strong>
+                </div>
+
+                <button class="btn-finalizar">
+                    Finalizar pedido
+                </button>
+
+                <p class="mensaje-seguro">
+                    <i class="fa-solid fa-lock"></i>
+                    Compra segura con Paluse
+                </p>
+            </aside>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

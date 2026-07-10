@@ -1,0 +1,411 @@
+.contacto-page {
+    padding: 40px 7% 55px;
+    background-color: #e8fbff;
+    background-image:
+        radial-gradient(#9bd0ff 18%, transparent 19%),
+        radial-gradient(#9bd0ff 18%, transparent 19%);
+    background-size: 90px 90px;
+    background-position: 0 0, 45px 45px;
+}
+
+.breadcrumb-contacto {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2f67b2;
+    margin-bottom: 28px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #2f67b2;
+}
+
+.breadcrumb-contacto a {
+    color: #2f67b2;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.breadcrumb-contacto a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-contacto span {
+    color: #2f67b2;
+}
+
+.breadcrumb-contacto .breadcrumb-actual {
+    font-weight: 700;
+}
+
+.titulo-contacto {
+    color: #2f67b2;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 38px;
+}
+
+.titulo-contacto i {
+    margin-right: 12px;
+    font-size: 40px;
+    vertical-align: middle;
+}
+
+.redes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.red-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 38px;
+    border-radius: 18px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+}
+
+.red-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+    color: white;
+}
+
+.card-instagram { background-color: #5ab8f5; }
+.card-facebook  { background-color: #4494cb; }
+.card-email     { background-color: #5ab8f5; }
+
+.red-izq {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.red-icono {
+    font-size: 56px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.red-nombre {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 28px;
+    color: white;
+}
+
+.red-der-texto {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    text-align: right;
+    margin: 0;
+    line-height: 1.4;
+}
+.red-izq-texto {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.red-der {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.red-circulo {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.red-circulo i {
+    font-size: 36px;
+    color: white;
+}
+
+.red-circulo-fb {
+    background-color: #1565c0;
+}
+
+.red-circulo-wa {
+    background-color: #25d366;
+}
+
+.email-link {
+    color: white;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.email-link:hover {
+    color: #d0edff;
+}
+
+/* Teléfono */
+.telefono-texto {
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+}
+
+.resenas-wave {
+    width: 100%;
+    height: 55px;
+    background-color: #1b4f84;
+    clip-path: polygon(0 100%, 50% 0%, 100% 100%);
+    margin-bottom: -1px;
+}
+
+.resenas-section {
+    background-color: #1b4f84;
+    padding: 10px 5% 60px;
+}
+
+.resenas-titulo {
+    color: white;
+    font-size: 54px;
+    font-weight: 900;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.resenas-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.resena-card {
+    background: white;
+    border-radius: 10px;
+    padding: 18px 16px 14px;
+    width: 230px;
+    min-height: 280px;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s;
+}
+
+.resena-card:hover {
+    transform: translateY(-4px);
+}
+
+.resena-texto {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.resena-autor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.resena-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid #9bd0ff;
+}
+
+.resena-nombre {
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.resena-estrellas i {
+    color: #f5b800;
+    font-size: 13px;
+}
+
+.resena-btn {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+}
+
+.resena-btn:hover {
+    color: #2f67b2;
+}
+
+.proveedores {
+    background-color: #1c4e7a;
+    padding: 20px 7%;
+    text-align: center;
+}
+
+.proveedores-titulo {
+    color: #93d2ff;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+}
+
+.proveedores-logos {
+    background-color: #ffffff;
+    padding: 24px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 55px;
+    flex-wrap: wrap;
+}
+
+.prov-epson {
+    font-size: 28px;
+    font-weight: 900;
+    font-family: 'Georgia', serif;
+    color: #1a2f5e;
+    letter-spacing: -1px;
+}
+
+.prov-colormake {
+    font-size: 16px;
+    color: #555;
+}
+
+.prov-colormake b { color: #3a3a3a; }
+
+.prov-hanrun {
+    font-size: 16px;
+    color: #444;
+}
+
+.prov-hanrun b {
+    font-size: 26px;
+    color: #c62828;
+    font-family: 'Georgia', serif;
+    vertical-align: middle;
+}
+
+.prov-fauca {
+    font-size: 19px;
+    font-weight: 900;
+    color: #ffffff;
+    background-color: #1565c0;
+    padding: 5px 14px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+}
+
+.prov-xtool {
+    font-size: 19px;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: 1px;
+}
+
+.prov-x {
+    color: #2e7d32;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.nav-activo {
+    color: #ffe27a !important;
+    font-weight: bold;
+}
+
+@media (max-width: 900px) {
+    .red-card {
+        padding: 22px 24px;
+    }
+
+    .red-icono {
+        font-size: 40px;
+    }
+
+    .red-nombre {
+        font-size: 22px;
+    }
+
+    .red-der-texto,
+    .red-izq-texto {
+        font-size: 17px;
+    }
+
+    .resenas-grid {
+        gap: 16px;
+    }
+
+    .resena-card {
+        width: 200px;
+    }
+}
+
+@media (max-width: 650px) {
+    .contacto-page {
+        padding: 30px 5% 40px;
+    }
+
+    .titulo-contacto {
+        font-size: 32px;
+    }
+
+    .red-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .red-der-texto,
+    .red-izq-texto {
+        text-align: left;
+    }
+
+    .resenas-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .resena-card {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .proveedores-logos {
+        gap: 28px;
+        padding: 20px 20px;
+    }
+}

@@ -1,0 +1,515 @@
+/* ========================================
+   OFERTAS Y PROMOCIONES - Paluse
+   ======================================== */
+
+.ofertas-page {
+    min-height: 100vh;
+    padding: 45px 7%;
+    background-color: #e8fbff;
+    background-image:
+        radial-gradient(#9bd0ff 18%, transparent 19%),
+        radial-gradient(#9bd0ff 18%, transparent 19%);
+    background-size: 90px 90px;
+    background-position: 0 0, 45px 45px;
+}
+
+/* ===== HERO / BANNER PRINCIPAL ===== */
+.ofertas-hero {
+    background: linear-gradient(135deg, #D6006F, #ff6b9d);
+    border-radius: 35px;
+    padding: 50px 55px;
+    color: white;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(214, 0, 111, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+.ofertas-hero::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ofertas-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: 20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-etiqueta {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(4px);
+}
+
+.hero-etiqueta i {
+    margin-right: 8px;
+}
+
+.ofertas-hero h1 {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.hero-descripcion {
+    font-size: 20px;
+    max-width: 650px;
+    opacity: 0.92;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* ===== CONTADOR REGRESIVO ===== */
+.hero-contador {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 18px 32px;
+    border-radius: 60px;
+    backdrop-filter: blur(6px);
+    width: fit-content;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contador-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.contador-numero {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0 8px;
+    border-radius: 8px;
+    min-width: 48px;
+    text-align: center;
+}
+
+.contador-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.8;
+    margin-top: 2px;
+    font-weight: 700;
+}
+
+.contador-dos-puntos {
+    font-size: 32px;
+    font-weight: 900;
+    opacity: 0.6;
+    padding-bottom: 14px;
+}
+
+/* ===== GRID DE PRODUCTOS EN OFERTA ===== */
+.ofertas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 50px;
+}
+
+/* ===== TARJETA DE PRODUCTO EN OFERTA ===== */
+.producto-oferta {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: 0.35s;
+    border: 2px solid transparent;
+}
+
+.producto-oferta:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    border-color: #D6006F;
+}
+
+.producto-oferta-imagen {
+    position: relative;
+    overflow: hidden;
+    background: #f5faff;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.producto-oferta-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.producto-oferta:hover .producto-oferta-imagen img {
+    transform: scale(1.05);
+}
+
+/* ===== BADGES ===== */
+.badge-descuento {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #D6006F;
+    color: white;
+    font-weight: 900;
+    font-size: 16px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(214, 0, 111, 0.4);
+    z-index: 2;
+}
+
+.badge-popular {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #ffc107;
+    color: #333;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: 0 3px 10px rgba(255, 193, 7, 0.4);
+}
+
+.badge-oferta-especial {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #ff6b6b;
+    color: white;
+    font-weight: 800;
+    font-size: 11px;
+    padding: 4px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: 0 3px 10px rgba(255, 107, 107, 0.4);
+    animation: pulsoOferta 1.5s ease-in-out infinite;
+}
+
+@keyframes pulsoOferta {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* ===== CUERPO DEL PRODUCTO ===== */
+.producto-oferta-body {
+    padding: 22px 24px 24px;
+}
+
+.producto-oferta-body h3 {
+    font-size: 20px;
+    font-weight: 900;
+    color: #222;
+    margin-bottom: 4px;
+    min-height: 48px;
+}
+
+.producto-oferta-body p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 12px;
+    min-height: 40px;
+}
+
+.precios-oferta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.precio-original {
+    font-size: 18px;
+    color: #aaa;
+    text-decoration: line-through;
+    font-weight: 600;
+}
+
+.precio-oferta {
+    font-size: 28px;
+    font-weight: 900;
+    color: #D6006F;
+}
+
+/* ===== FOOTER DEL PRODUCTO ===== */
+.producto-oferta-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 16px;
+}
+
+.stock-disponible {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+.stock-disponible i {
+    margin-right: 4px;
+    color: #2e7d32;
+}
+
+.acciones-oferta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.acciones-oferta a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: #f0f7fe;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.acciones-oferta a:hover {
+    background: #4daef5;
+    color: white;
+    transform: scale(1.1);
+}
+
+.acciones-oferta .btn-carrito-oferta {
+    background: #4daef5;
+    color: white;
+}
+
+.acciones-oferta .btn-carrito-oferta:hover {
+    background: #D6006F;
+}
+
+/* ===== BANNER DE SUSCRIPCIÓN ===== */
+.ofertas-suscripcion {
+    background: linear-gradient(135deg, #1a2f5e, #2a4a8a);
+    border-radius: 28px;
+    padding: 40px 50px;
+    margin-top: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.suscripcion-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.suscripcion-texto {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: white;
+}
+
+.suscripcion-texto i {
+    font-size: 42px;
+    color: #ffc107;
+}
+
+.suscripcion-texto h2 {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.suscripcion-texto p {
+    margin: 0;
+    opacity: 0.8;
+    font-size: 15px;
+}
+
+.suscripcion-form {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.suscripcion-form input {
+    padding: 14px 22px;
+    border-radius: 50px;
+    border: none;
+    width: 300px;
+    font-size: 15px;
+    outline: none;
+}
+
+.suscripcion-form button {
+    padding: 14px 30px;
+    border-radius: 50px;
+    border: none;
+    background: #ffc107;
+    color: #1a2f5e;
+    font-weight: 800;
+    font-size: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.suscripcion-form button:hover {
+    background: #ffd54f;
+    transform: scale(1.03);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+    .ofertas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .suscripcion-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .suscripcion-texto {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .suscripcion-form {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .suscripcion-form input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .ofertas-page {
+        padding: 25px 4%;
+    }
+
+    .ofertas-hero {
+        padding: 30px 25px;
+    }
+
+    .ofertas-hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-descripcion {
+        font-size: 17px;
+    }
+
+    .hero-contador {
+        padding: 14px 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .contador-item {
+        min-width: 45px;
+    }
+
+    .contador-numero {
+        font-size: 28px;
+        min-width: 36px;
+    }
+
+    .contador-dos-puntos {
+        font-size: 24px;
+        padding-bottom: 10px;
+    }
+
+    .ofertas-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .producto-oferta-body h3 {
+        min-height: auto;
+    }
+
+    .producto-oferta-body p {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .ofertas-hero h1 {
+        font-size: 28px;
+    }
+
+    .hero-contador {
+        padding: 12px 14px;
+    }
+
+    .contador-numero {
+        font-size: 22px;
+        min-width: 30px;
+    }
+
+    .contador-label {
+        font-size: 9px;
+    }
+
+    .contador-dos-puntos {
+        font-size: 18px;
+        padding-bottom: 8px;
+    }
+
+    .precio-oferta {
+        font-size: 22px;
+    }
+
+    .suscripcion-texto h2 {
+        font-size: 20px;
+    }
+}

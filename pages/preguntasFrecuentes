@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - Paluse</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/indexStyles.css">
+    <link rel="stylesheet" href="../css/preguntasFrecuentesStyles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <a href="../index.html">
+                    <img src="../resources/logoPaluseNew.png" id="logo" alt="Logo Paluse">
+                </a>
+
+                <div id="comment">
+                    <span>Envios en todo Costa Rica</span>
+                    <i class="fa-solid fa-truck iconoNav"></i>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarPrincipal">
+
+                    <form class="d-flex" role="search" id="barraBusqueda">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" id="barra">
+                        <button class="btn btn-outline-" type="button" id="buscarBtn">Buscar</button>
+                    </form>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-heart iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./carrito.html">
+                                <i class="fa-solid fa-cart-shopping iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./login.html">
+                                <img src="../resources/profileImg.jpg" id="userProfile" alt="Usuario">
+                                <span id="correoUser"> usuario1@gmail.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="navbar navbar-expand-lg" id="secondNavbar">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse show">
+                <ul class="navbar-nav mx-auto" id="lista">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="./catalogo.html" role="button" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-layer-group iconoNav2"></i>
+                            Catálogo
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Ropa</a></li>
+                            <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                            <li><a class="dropdown-item" href="#">Envoltorios</a></li>
+                            <li><a class="dropdown-item" href="#">Otros</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-tag iconoNav2"></i>
+                        <a class="nav-link" href="./ofertas.html">Ofertas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-info iconoNav2"></i>
+                        <a class="nav-link" href="../index.html">Acerca de nosotros</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-phone iconoNav2"></i>
+                            Contacto
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./contactoRedes.html">Redes</a></li>
+                            <li><a class="dropdown-item" href="./formularioContacto.html">Formulario Contacto</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-circle-question iconoNav2"></i>
+                        <a class="nav-link nav-activo" href="./faq.html">FAQ</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-headphones iconoNav2"></i>
+                        <a class="nav-link" href="./soporte.html">Soporte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-door-closed iconoNav2"></i>
+                        <a class="nav-link" href="#">Cerrar sesión</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="faq-page">
+
+        <section class="faq-hero">
+            <div class="hero-contenido">
+                <span class="hero-etiqueta"><i class="fa-regular fa-circle-question"></i> Ayuda y soporte</span>
+                <h1>Preguntas Frecuentes</h1>
+                <p class="hero-descripcion">
+                    Encuentra respuestas a las dudas más comunes sobre nuestros productos,
+                    personalización, envíos y más. Si no encuentras lo que buscas,
+                    <a href="./formularioContacto.html" class="hero-link">contáctanos</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="faq-acordeon">
+
+            <div class="faq-categoria">
+                <h2 class="categoria-titulo"><i class="fa-regular fa-star"></i> General</h2>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq1" class="faq-check">
+                    <label for="faq1" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Qué es Paluse y qué tipo de productos ofrecen?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Paluse es un emprendimiento costarricense especializado en la creación de
+                            <strong>productos personalizados</strong> mediante sublimación. Ofrecemos tazas,
+                            cajas, ropa, peluches, cuadros y combos personalizados con diseños únicos,
+                            ideales para regalos o detalles especiales.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <input type="checkbox" id="faq2" class="faq-check">
+                    <label for="faq2" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Cómo puedo realizar un pedido?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Para realizar un pedido, solo debes seguir estos pasos:
+                        </p>
+                        <ol>
+                            <li>Explora nuestro <a href="./catalogo.html">catálogo</a> y selecciona el producto que deseas.</li>
+                            <li>Haz clic en el producto para ver sus detalles y opciones de personalización.</li>
+                            <li>Agrega el producto a tu carrito de compras.</li>
+                            <li>Completa el proceso de pago y espera la confirmación de tu pedido.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-categoria">
+                <h2 class="categoria-titulo"><i class="fa-regular fa-box"></i> Productos</h2>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq3" class="faq-check">
+                    <label for="faq3" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Todos los productos son personalizables?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Sí, la mayoría de nuestros productos son completamente personalizables.
+                            Puedes elegir el diseño, colores, texto e imágenes que prefieras.
+                            Algunos productos tienen opciones limitadas, pero en la página de cada producto
+                            encontrarás los detalles específicos de personalización.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq4" class="faq-check">
+                    <label for="faq4" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Qué materiales utilizan para los productos?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Utilizamos materiales de alta calidad:
+                        </p>
+                        <ul>
+                            <li><strong>Tazas:</strong> Cerámica blanca de 225 ml.</li>
+                            <li><strong>Cajas:</strong> Cartón resistente con acabado premium.</li>
+                            <li><strong>Ropa:</strong> Sueta 100% algodón con sublimación.</li>
+                            <li><strong>Peluches:</strong> Tela suave y relleno hipoalergénico.</li>
+                            <li><strong>Cuadros:</strong> Madera y papel fotográfico de alta calidad.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-categoria">
+                <h2 class="categoria-titulo"><i class="fa-regular fa-pen-to-square"></i> Personalización</h2>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq5" class="faq-check">
+                    <label for="faq5" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Cuánto tiempo toma el proceso de personalización?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            El tiempo de personalización varía según la complejidad del diseño y la cantidad de productos:
+                        </p>
+                        <ul>
+                            <li><strong>Diseños simples:</strong> 1 a 2 días hábiles.</li>
+                            <li><strong>Diseños complejos:</strong> 3 a 5 días hábiles.</li>
+                            <li><strong>Pedidos grandes:</strong> Consulta a nuestro equipo para tiempos específicos.</li>
+                        </ul>
+                        <p>Te notificaremos cuando tu pedido esté listo para ser enviado.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq6" class="faq-check">
+                    <label for="faq6" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Puedo pedir un diseño que no está en el catálogo?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            ¡Por supuesto! En Paluse nos encanta crear diseños únicos.
+                            Puedes enviarnos tu propia imagen, logo o idea y nuestro equipo
+                            la transformará en un producto personalizado.
+                            Solo debes indicarlo en el campo de "Descripción de personalización"
+                            al momento de hacer tu pedido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-categoria">
+                <h2 class="categoria-titulo"><i class="fa-regular fa-truck"></i> Envíos</h2>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq7" class="faq-check">
+                    <label for="faq7" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Hacen envíos a toda Costa Rica?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Sí, realizamos envíos a <strong>todo Costa Rica</strong>.
+                            Contamos con cobertura en las principales provincias y zonas rurales.
+                            El costo y tiempo de envío varía según la ubicación y el tipo de producto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq8" class="faq-check">
+                    <label for="faq8" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Cuánto cuesta el envío?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            El costo de envío depende de la zona de entrega y el peso del paquete.
+                            Contamos con <strong>envío gratis</strong> en pedidos superiores a ₡15,000
+                            (válido para todo el país). Para montos menores, el costo es de ₡1,500 a ₡3,500
+                            según la ubicación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq9" class="faq-check">
+                    <label for="faq9" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Cuánto tarda en llegar mi pedido?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Los tiempos de entrega son:
+                        </p>
+                        <ul>
+                            <li><strong>Zona Metropolitana:</strong> 1 a 2 días hábiles después del proceso de personalización.</li>
+                            <li><strong>Resto del país:</strong> 2 a 5 días hábiles.</li>
+                            <li><strong>Zonas rurales:</strong> Puede tomar hasta 7 días hábiles.</li>
+                        </ul>
+                        <p>Siempre te proporcionaremos un número de rastreo para que puedas seguir tu pedido.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-categoria">
+                <h2 class="categoria-titulo"><i class="fa-regular fa-credit-card"></i> Pagos</h2>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq10" class="faq-check">
+                    <label for="faq10" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Qué métodos de pago aceptan?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Aceptamos los siguientes métodos de pago:
+                        </p>
+                        <ul>
+                            <li><strong>Tarjetas de crédito/débito:</strong> Visa, Mastercard y American Express.</li>
+                            <li><strong>Sinpe Móvil:</strong> Transferencia inmediata desde tu banco.</li>
+                            <li><strong>Transferencia bancaria:</strong> A nuestras cuentas del Banco Nacional y BCR.</li>
+                            <li><strong>Efectivo:</strong> Solo para entregas locales en San José.</li>
+                        </ul>
+                        <p>Todos los pagos son seguros y encriptados.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq11" class="faq-check">
+                    <label for="faq11" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Es seguro comprar en Paluse?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            ¡Completamente seguro! Utilizamos plataformas de pago con <strong>certificación SSL</strong>
+                            que protegen tus datos personales y bancarios. Además, todas las transacciones
+                            son procesadas con los más altos estándares de seguridad.
+                            Puedes ver nuestro sello de confianza al final de la página.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-categoria">
+                <h2 class="categoria-titulo"><i class="fa-regular fa-rotate-left"></i> Devoluciones</h2>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq12" class="faq-check">
+                    <label for="faq12" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Puedo devolver o cambiar un producto personalizado?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Por la naturaleza de los productos personalizados, <strong>no realizamos devoluciones</strong>
+                            por cambios de opinión o errores en el diseño proporcionado por el cliente.
+                            Sin embargo, si el producto llega dañado o con un defecto de fabricación,
+                            nos hacemos responsables y lo reemplazamos sin costo adicional.
+                        </p>
+                        <p>Para más detalles, consulta nuestra <a href="#">política de devoluciones</a>.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq13" class="faq-check">
+                    <label for="faq13" class="faq-pregunta">
+                        <span class="faq-icono"><i class="fa-regular fa-circle-question"></i></span>
+                        <span class="faq-texto">¿Qué hago si mi pedido llega dañado?</span>
+                        <span class="faq-flecha"><i class="fa-solid fa-chevron-down"></i></span>
+                    </label>
+                    <div class="faq-respuesta">
+                        <p>
+                            Si tu pedido llega en mal estado, sigue estos pasos:
+                        </p>
+                        <ol>
+                            <li>Toma fotografías del producto y del empaque donde se vea claramente el daño.</li>
+                            <li>Envía las imágenes a nuestro correo <a href="mailto:celinaCornejo@gmail.com">celinaCornejo@gmail.com</a>.</li>
+                            <li>Incluye tu número de pedido y una breve descripción del problema.</li>
+                            <li>Nuestro equipo evaluará el caso y te ofrecerá una solución (reemplazo o reembolso).</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="faq-contacto">
+            <div class="contacto-contenido">
+                <div class="contacto-texto">
+                    <i class="fa-regular fa-message"></i>
+                    <h2>¿No encontraste lo que buscabas?</h2>
+                    <p>
+                        Si tu pregunta no está en nuestra lista, no dudes en contactarnos.
+                        Estamos aquí para ayudarte.
+                    </p>
+                </div>
+                <div class="contacto-botones">
+                    <a href="./formularioContacto.html" class="btn-contacto">
+                        <i class="fa-regular fa-envelope"></i> Formulario de contacto
+                    </a>
+                    <a href="mailto:celinaCornejo@gmail.com" class="btn-contacto btn-email">
+                        <i class="fa-regular fa-envelope"></i> celinaCornejo@gmail.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+
+        <section class="caracteristicas">
+            <div class="item">
+                <div class="circulo">
+                    <i class="fa-solid fa-tag"></i>
+                </div>
+                <div class="texto">
+                    <h3>Precios Competitivos</h3>
+                    <p>Los mejores regalos al mejor precio.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="circulo">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <div class="texto">
+                    <h3>Soporte Experto</h3>
+                    <p>Necesitas ayuda y nosotros te la daremos.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="circulo">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <div class="texto">
+                    <h3>Pago Seguro</h3>
+                    <p>Paga con total confianza.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="circulo">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div class="texto">
+                    <h3>Entrega Rápida</h3>
+                    <p>En toda Costa Rica.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="contenedorF">
+
+            <section class="pocoNosotros">
+                <h2>Un poco de nosotros</h2>
+                <h3>Misión:</h3>
+                <p>
+                    Brindar recuerdos a nuestros clientes a través de productos de calidad
+                    <br>
+                    que satisfagan las necesidades de los interesados.
+                </p>
+                <h3>Visión:</h3>
+                <p>
+                    Ser una organización reconocida por la calidad de nuestros productos y la
+                    <br>
+                    confianza de nuestros clientes en el proyecto en crecimiento Paluse.
+                </p>
+                <span>Quieres ver toda nuestra historia?</span>
+                <button type="button" class="btnFooter">Sigue por aquí</button>
+            </section>
+
+            <hr id="divide">
+
+            <section class="redesSociales">
+                <span>Encuéntranos en nuestras redes sociales:</span>
+                <ul id="redes">
+                    <li>
+                        <i class="fa-solid fa-table-cells-large"></i>
+                        <a href="./catalogo.html">Catálogo</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-circle-info"></i>
+                        <a href="./sobreNosotros.html">Sobre Nosotros</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-circle-question"></i>
+                        <a href="./faq.html">Preguntas Frecuentes</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-at"></i>
+                        <a href="./contactoRedes.html">Contacto</a>
+                    </li>
+                    <li>
+                        <i class="fa-regular fa-percent"></i>
+                        <a href="./ofertas.html">Descuentos</a>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+
+        <span class="derechosReservados">@2026 Paluse, todos los derechos reservados</span>
+
+    </footer>
+
+</body>
+
+</html>

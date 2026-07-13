@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Pedidos - Paluse</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/indexStyles.css">
+    <link rel="stylesheet" href="../css/adminStyles.css">
+    <link rel="stylesheet" href="../css/gestionarPedidosStyles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <a href="../index.html">
+                    <img src="../resources/logoPaluseNew.png" id="logo" alt="Logo Paluse">
+                </a>
+
+                <div id="comment">
+                    <span>Administración Paluse</span>
+                    <i class="fa-solid fa-shield-halved iconoNav"></i>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarPrincipal" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarPrincipal">
+                    <form class="d-flex" role="search" id="barraBusqueda">
+                        <input class="form-control me-2" type="search" placeholder="Buscar pedido..."
+                            id="barra" aria-label="Buscar">
+                        <button class="btn btn-outline-" type="button" id="buscarBtn">Buscar</button>
+                    </form>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-bell iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-gear iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./login.html">
+                                <img src="../resources/profileImg.jpg" id="userProfile" alt="Administrador">
+                                <span id="correoUser">admin@paluse.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="navbar navbar-expand-lg" id="secondNavbar">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse show">
+                <ul class="navbar-nav mx-auto" id="lista">
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-gauge-high iconoNav2"></i>
+                        <a class="nav-link" href="./admininistracion.html">Dashboard</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-box iconoNav2"></i>
+                        <a class="nav-link" href="./gestionarProductos.html">Productos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-truck-fast iconoNav2"></i>
+                        <a class="nav-link nav-activo" href="#">Pedidos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-users iconoNav2"></i>
+                        <a class="nav-link" href="#">Usuarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-chart-line iconoNav2"></i>
+                        <a class="nav-link" href="#">Reportes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-door-closed iconoNav2"></i>
+                        <a class="nav-link" href="../index.html">Salir</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="admin-page">
+
+        <section class="admin-header">
+            <div class="admin-header-texto">
+                <nav class="breadcrumb-admin" aria-label="breadcrumb">
+                    <a href="../index.html">Inicio</a>
+                    <span>/</span>
+                    <a href="./admininistracion.html">Administración</a>
+                    <span>/</span>
+                    <span>Gestionar Pedidos</span>
+                </nav>
+                <h1>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    Gestionar Pedidos
+                </h1>
+                <p>Consulta, cambia el estado y revisa el detalle de todos los pedidos.</p>
+            </div>
+            <div class="admin-header-fecha">
+                <i class="fa-regular fa-calendar"></i>
+                <span id="fechaActual"></span>
+            </div>
+        </section>
+
+        <div class="gp-toolbar">
+            <div class="gp-busqueda">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="filtroPedido" placeholder="Buscar por cliente o #pedido..."
+                    oninput="filtrarTabla()">
+            </div>
+            <div class="gp-toolbar-derecha">
+                <select id="filtroEstado" class="gp-select" onchange="filtrarTabla()">
+                    <option value="">Todos los estados</option>
+                    <option value="Activa">Activa</option>
+                    <option value="En proceso">En proceso</option>
+                    <option value="Enviado">Enviado</option>
+                    <option value="Completado">Completado</option>
+                    <option value="Anulada">Anulada</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="gped-tabla-contenedor">
+            <table class="gped-tabla" id="tablaPedidos">
+                <thead>
+                    <tr>
+                        <th># Pedido</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><strong>#PAL-001</strong></td>
+                        <td>
+                            <div class="gped-cliente">
+                                <img src="../resources/profileImg.jpg" class="gped-avatar" alt="Cliente">
+                                <div>
+                                    <span class="gped-nombre col-cliente">María Rodríguez</span>
+                                    <span class="gped-correo">maria@gmail.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>09/07/2026</td>
+                        <td>₡8,500</td>
+                        <td><span class="gped-badge col-estado badge-completado">Completado</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Ver detalles"
+                                    data-bs-toggle="modal" data-bs-target="#modalDetalle"
+                                    onclick="verDetalle('PAL-001','María Rodríguez','maria@gmail.com','09/07/2026','₡8,500','Completado')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button class="btn-estado" title="Cambiar estado"
+                                    data-bs-toggle="modal" data-bs-target="#modalEstado"
+                                    onclick="abrirModalEstado('PAL-001','Completado')">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#PAL-002</strong></td>
+                        <td>
+                            <div class="gped-cliente">
+                                <img src="../resources/profileImg.jpg" class="gped-avatar" alt="Cliente">
+                                <div>
+                                    <span class="gped-nombre col-cliente">Carlos Jiménez</span>
+                                    <span class="gped-correo">carlos@gmail.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>08/07/2026</td>
+                        <td>₡15,200</td>
+                        <td><span class="gped-badge col-estado badge-enviado">Enviado</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Ver detalles"
+                                    data-bs-toggle="modal" data-bs-target="#modalDetalle"
+                                    onclick="verDetalle('PAL-002','Carlos Jiménez','carlos@gmail.com','08/07/2026','₡15,200','Enviado')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button class="btn-estado" title="Cambiar estado"
+                                    data-bs-toggle="modal" data-bs-target="#modalEstado"
+                                    onclick="abrirModalEstado('PAL-002','Enviado')">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#PAL-003</strong></td>
+                        <td>
+                            <div class="gped-cliente">
+                                <img src="../resources/profileImg.jpg" class="gped-avatar" alt="Cliente">
+                                <div>
+                                    <span class="gped-nombre col-cliente">Sofía Mora</span>
+                                    <span class="gped-correo">sofia@gmail.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>07/07/2026</td>
+                        <td>₡6,800</td>
+                        <td><span class="gped-badge col-estado badge-en-proceso">En proceso</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Ver detalles"
+                                    data-bs-toggle="modal" data-bs-target="#modalDetalle"
+                                    onclick="verDetalle('PAL-003','Sofía Mora','sofia@gmail.com','07/07/2026','₡6,800','En proceso')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button class="btn-estado" title="Cambiar estado"
+                                    data-bs-toggle="modal" data-bs-target="#modalEstado"
+                                    onclick="abrirModalEstado('PAL-003','En proceso')">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#PAL-004</strong></td>
+                        <td>
+                            <div class="gped-cliente">
+                                <img src="../resources/profileImg.jpg" class="gped-avatar" alt="Cliente">
+                                <div>
+                                    <span class="gped-nombre col-cliente">Luis Campos</span>
+                                    <span class="gped-correo">luis@gmail.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>05/07/2026</td>
+                        <td>₡22,000</td>
+                        <td><span class="gped-badge col-estado badge-activa">Activa</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Ver detalles"
+                                    data-bs-toggle="modal" data-bs-target="#modalDetalle"
+                                    onclick="verDetalle('PAL-004','Luis Campos','luis@gmail.com','05/07/2026','₡22,000','Activa')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button class="btn-estado" title="Cambiar estado"
+                                    data-bs-toggle="modal" data-bs-target="#modalEstado"
+                                    onclick="abrirModalEstado('PAL-004','Activa')">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>#PAL-005</strong></td>
+                        <td>
+                            <div class="gped-cliente">
+                                <img src="../resources/profileImg.jpg" class="gped-avatar" alt="Cliente">
+                                <div>
+                                    <span class="gped-nombre col-cliente">Andrea Solís</span>
+                                    <span class="gped-correo">andrea@gmail.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>01/07/2026</td>
+                        <td>₡4,200</td>
+                        <td><span class="gped-badge col-estado badge-anulada">Anulada</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Ver detalles"
+                                    data-bs-toggle="modal" data-bs-target="#modalDetalle"
+                                    onclick="verDetalle('PAL-005','Andrea Solís','andrea@gmail.com','01/07/2026','₡4,200','Anulada')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                <button class="btn-estado" title="Cambiar estado"
+                                    data-bs-toggle="modal" data-bs-target="#modalEstado"
+                                    onclick="abrirModalEstado('PAL-005','Anulada')">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="gp-contador">
+                <span id="contadorPedidos">Mostrando 5 pedidos</span>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content gp-modal">
+
+                <div class="modal-header gp-modal-header">
+                    <h5 class="modal-title" id="modalDetalleLabel">
+                        <i class="fa-solid fa-eye"></i>
+                        Detalle del Pedido <span id="detallePedidoId"></span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body gp-modal-body">
+
+                    <div class="gped-detalle-cliente">
+                        <div class="gped-detalle-fila">
+                            <i class="fa-solid fa-user"></i>
+                            <div>
+                                <span class="gped-detalle-label">Cliente</span>
+                                <span class="gped-detalle-valor" id="detalleNombre"></span>
+                            </div>
+                        </div>
+                        <div class="gped-detalle-fila">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <span class="gped-detalle-label">Correo</span>
+                                <span class="gped-detalle-valor" id="detalleCorreo"></span>
+                            </div>
+                        </div>
+                        <div class="gped-detalle-fila">
+                            <i class="fa-regular fa-calendar"></i>
+                            <div>
+                                <span class="gped-detalle-label">Fecha</span>
+                                <span class="gped-detalle-valor" id="detalleFecha"></span>
+                            </div>
+                        </div>
+                        <div class="gped-detalle-fila">
+                            <i class="fa-solid fa-tag"></i>
+                            <div>
+                                <span class="gped-detalle-label">Estado</span>
+                                <span id="detalleEstadoBadge"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="gped-subtitulo">
+                        <i class="fa-solid fa-box"></i> Productos del pedido
+                    </h6>
+                    <table class="gped-tabla-detalle">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio unit.</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Taza personalizada</td>
+                                <td>₡4,500</td>
+                                <td>1</td>
+                                <td>₡4,500</td>
+                            </tr>
+                            <tr>
+                                <td>Sueta niño</td>
+                                <td>₡12,000</td>
+                                <td>1</td>
+                                <td>₡12,000</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="gped-total-label">Total</td>
+                                <td class="gped-total-valor" id="detalleTotal"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer gp-modal-footer">
+                    <button type="button" class="gp-btn-cancelar" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> Cerrar
+                    </button>
+                    <button type="button" class="gp-btn-guardar"
+                        onclick="bootstrap.Modal.getInstance(document.getElementById('modalDetalle')).hide(); abrirModalEstadoDesdeDetalle()">
+                        <i class="fa-solid fa-rotate"></i> Cambiar estado
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEstado" tabindex="-1" aria-labelledby="modalEstadoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content gp-modal">
+
+                <div class="modal-header gp-modal-header">
+                    <h5 class="modal-title" id="modalEstadoLabel">
+                        <i class="fa-solid fa-rotate"></i>
+                        Cambiar Estado — Pedido <span id="estadoPedidoId"></span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body gp-modal-body">
+
+                    <div class="gped-estado-actual">
+                        <span class="gped-detalle-label">Estado actual:</span>
+                        <span id="estadoActualBadge"></span>
+                    </div>
+
+                    <div class="gp-campo-grupo" style="margin-top: 20px;">
+                        <label class="gp-label" for="selectNuevoEstado">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i> Nuevo estado
+                        </label>
+                        <select id="selectNuevoEstado" class="gp-input gp-select-modal">
+                            <option value="Activa">Activa</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Enviado">Enviado</option>
+                            <option value="Completado">Completado</option>
+                            <option value="Anulada">Anulada</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer gp-modal-footer">
+                    <button type="button" class="gp-btn-cancelar" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> Cancelar
+                    </button>
+                    <button type="button" class="gp-btn-guardar" onclick="guardarEstado()">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fechaActual').textContent =
+            new Date().toLocaleDateString('es-CR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        let pedidoActivo = null;
+
+        const badgeClases = {
+            'Activa':      'badge-activa',
+            'En proceso':  'badge-en-proceso',
+            'Enviado':     'badge-enviado',
+            'Completado':  'badge-completado',
+            'Anulada':     'badge-anulada'
+        };
+
+        function crearBadge(estado) {
+            return `<span class="gped-badge ${badgeClases[estado] || ''}">${estado}</span>`;
+        }
+
+        function verDetalle(id, nombre, correo, fecha, total, estado) {
+            pedidoActivo = id;
+            document.getElementById('detallePedidoId').textContent = '#' + id;
+            document.getElementById('detalleNombre').textContent = nombre;
+            document.getElementById('detalleCorreo').textContent = correo;
+            document.getElementById('detalleFecha').textContent = fecha;
+            document.getElementById('detalleTotal').textContent = total;
+            document.getElementById('detalleEstadoBadge').innerHTML = crearBadge(estado);
+        }
+
+        function abrirModalEstado(id, estadoActual) {
+            pedidoActivo = id;
+            document.getElementById('estadoPedidoId').textContent = '#' + id;
+            document.getElementById('estadoActualBadge').innerHTML = crearBadge(estadoActual);
+            document.getElementById('selectNuevoEstado').value = estadoActual;
+        }
+
+        function abrirModalEstadoDesdeDetalle() {
+            const estado = document.getElementById('detalleEstadoBadge').querySelector('.gped-badge').textContent;
+            abrirModalEstado(pedidoActivo, estado);
+            new bootstrap.Modal(document.getElementById('modalEstado')).show();
+        }
+
+        function guardarEstado() {
+            const nuevoEstado = document.getElementById('selectNuevoEstado').value;
+            const filas = document.querySelectorAll('#tablaPedidos tbody tr');
+            filas.forEach(fila => {
+                const celdaId = fila.querySelector('td:first-child strong');
+                if (celdaId && celdaId.textContent === '#' + pedidoActivo) {
+                    const badgeEl = fila.querySelector('.col-estado');
+                    badgeEl.className = `gped-badge col-estado ${badgeClases[nuevoEstado]}`;
+                    badgeEl.textContent = nuevoEstado;
+                }
+            });
+            bootstrap.Modal.getInstance(document.getElementById('modalEstado')).hide();
+        }
+
+        function filtrarTabla() {
+            const texto = document.getElementById('filtroPedido').value.toLowerCase();
+            const estado = document.getElementById('filtroEstado').value;
+            const filas = document.querySelectorAll('#tablaPedidos tbody tr');
+            let visibles = 0;
+
+            filas.forEach(fila => {
+                const cliente = fila.querySelector('.col-cliente').textContent.toLowerCase();
+                const idPedido = fila.querySelector('td:first-child').textContent.toLowerCase();
+                const estadoFila = fila.querySelector('.col-estado').textContent;
+                const coincideTexto = cliente.includes(texto) || idPedido.includes(texto);
+                const coincideEstado = estado === '' || estadoFila === estado;
+
+                if (coincideTexto && coincideEstado) {
+                    fila.style.display = '';
+                    visibles++;
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+
+            document.getElementById('contadorPedidos').textContent =
+                `Mostrando ${visibles} pedido${visibles !== 1 ? 's' : ''}`;
+        }
+    </script>
+
+</body>
+</html>

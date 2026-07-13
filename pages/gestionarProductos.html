@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Productos - Paluse</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/indexStyles.css">
+    <link rel="stylesheet" href="../css/adminStyles.css">
+    <link rel="stylesheet" href="../css/gestionarProductosStyles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <a href="../index.html">
+                    <img src="../resources/logoPaluseNew.png" id="logo" alt="Logo Paluse">
+                </a>
+
+                <div id="comment">
+                    <span>Administración Paluse</span>
+                    <i class="fa-solid fa-shield-halved iconoNav"></i>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarPrincipal" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarPrincipal">
+                    <form class="d-flex" role="search" id="barraBusqueda">
+                        <input class="form-control me-2" type="search" placeholder="Buscar producto..."
+                            id="barra" aria-label="Buscar">
+                        <button class="btn btn-outline-" type="button" id="buscarBtn">Buscar</button>
+                    </form>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-bell iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-gear iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./login.html">
+                                <img src="../resources/profileImg.jpg" id="userProfile" alt="Administrador">
+                                <span id="correoUser">admin@paluse.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="navbar navbar-expand-lg" id="secondNavbar">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse show">
+                <ul class="navbar-nav mx-auto" id="lista">
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-gauge-high iconoNav2"></i>
+                        <a class="nav-link" href="./admininistracion.html">Dashboard</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-box iconoNav2"></i>
+                        <a class="nav-link nav-activo" href="#">Productos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-truck-fast iconoNav2"></i>
+                        <a class="nav-link" href="./gestionarPedidos.html">Pedidos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-users iconoNav2"></i>
+                        <a class="nav-link" href="#">Usuarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-chart-line iconoNav2"></i>
+                        <a class="nav-link" href="#">Reportes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-door-closed iconoNav2"></i>
+                        <a class="nav-link" href="../index.html">Salir</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="admin-page">
+
+        <section class="admin-header">
+            <div class="admin-header-texto">
+                <nav class="breadcrumb-admin" aria-label="breadcrumb">
+                    <a href="../index.html">Inicio</a>
+                    <span>/</span>
+                    <a href="./admininistracion.html">Administración</a>
+                    <span>/</span>
+                    <span>Gestionar Productos</span>
+                </nav>
+                <h1>
+                    <i class="fa-solid fa-box"></i>
+                    Gestionar Productos
+                </h1>
+                <p>Agrega, edita o elimina productos del catálogo de Paluse.</p>
+            </div>
+            <div class="admin-header-fecha">
+                <i class="fa-regular fa-calendar"></i>
+                <span id="fechaActual"></span>
+            </div>
+        </section>
+
+        <div class="gp-toolbar">
+            <div class="gp-busqueda">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="filtroProducto" placeholder="Filtrar productos..."
+                    oninput="filtrarTabla()">
+            </div>
+            <div class="gp-toolbar-derecha">
+                <select id="filtroCategoria" class="gp-select" onchange="filtrarTabla()">
+                    <option value="">Todas las categorías</option>
+                    <option value="Ropa">Ropa</option>
+                    <option value="Accesorios">Accesorios</option>
+                    <option value="Envoltorios">Envoltorios</option>
+                    <option value="Otros">Otros</option>
+                </select>
+                <button class="btn-agregar" data-bs-toggle="modal" data-bs-target="#modalProducto"
+                    onclick="abrirModalAgregar()">
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar Producto
+                </button>
+            </div>
+        </div>
+
+        <div class="gp-tabla-contenedor">
+            <table class="gp-tabla" id="tablaProductos">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Imagen</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Existencias</th>
+                        <th>Activo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <img src="../resources/taza.jpeg" class="gp-img-miniatura" alt="Taza personalizada">
+                        </td>
+                        <td class="col-descripcion">Taza personalizada</td>
+                        <td><span class="gp-badge badge-otros">Otros</span></td>
+                        <td>₡4,500</td>
+                        <td>15</td>
+                        <td><span class="gp-activo activo-si">Sí</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Editar"
+                                    data-bs-toggle="modal" data-bs-target="#modalProducto"
+                                    onclick="abrirModalEditar(1, 'Taza personalizada', 'Otros', 4500, 15, 'Taza de cerámica personalizada de alta calidad.', true)">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button class="btn-eliminar" title="Eliminar"
+                                    data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                                    onclick="confirmarEliminar(1, 'Taza personalizada')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <img src="../resources/cajaDesplegable.jpg" class="gp-img-miniatura" alt="Caja desplegable">
+                        </td>
+                        <td class="col-descripcion">Caja desplegable</td>
+                        <td><span class="gp-badge badge-envoltorios">Envoltorios</span></td>
+                        <td>₡3,200</td>
+                        <td>30</td>
+                        <td><span class="gp-activo activo-si">Sí</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Editar"
+                                    data-bs-toggle="modal" data-bs-target="#modalProducto"
+                                    onclick="abrirModalEditar(2, 'Caja desplegable', 'Envoltorios', 3200, 30, 'Caja desplegable para regalo personalizado.', true)">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button class="btn-eliminar" title="Eliminar"
+                                    data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                                    onclick="confirmarEliminar(2, 'Caja desplegable')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <img src="../resources/suetaPaluse.jpg" class="gp-img-miniatura" alt="Sueta niño">
+                        </td>
+                        <td class="col-descripcion">Sueta niño</td>
+                        <td><span class="gp-badge badge-ropa">Ropa</span></td>
+                        <td>₡12,000</td>
+                        <td>8</td>
+                        <td><span class="gp-activo activo-si">Sí</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Editar"
+                                    data-bs-toggle="modal" data-bs-target="#modalProducto"
+                                    onclick="abrirModalEditar(3, 'Sueta niño', 'Ropa', 12000, 8, 'Sueta personalizada para niños con sublimación full.', true)">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button class="btn-eliminar" title="Eliminar"
+                                    data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                                    onclick="confirmarEliminar(3, 'Sueta niño')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <img src="../resources/peluchePaluse.jpg" class="gp-img-miniatura" alt="Peluche personalizado">
+                        </td>
+                        <td class="col-descripcion">Peluche personalizado</td>
+                        <td><span class="gp-badge badge-otros">Otros</span></td>
+                        <td>₡9,800</td>
+                        <td>5</td>
+                        <td><span class="gp-activo activo-si">Sí</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Editar"
+                                    data-bs-toggle="modal" data-bs-target="#modalProducto"
+                                    onclick="abrirModalEditar(4, 'Peluche personalizado', 'Otros', 9800, 5, 'Peluche de tela con diseño sublimado personalizado.', true)">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button class="btn-eliminar" title="Eliminar"
+                                    data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                                    onclick="confirmarEliminar(4, 'Peluche personalizado')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <img src="../resources/cartelJackson.jpg" class="gp-img-miniatura" alt="Cartel aluminio">
+                        </td>
+                        <td class="col-descripcion">Cartel aluminio</td>
+                        <td><span class="gp-badge badge-accesorios">Accesorios</span></td>
+                        <td>₡7,500</td>
+                        <td>0</td>
+                        <td><span class="gp-activo activo-no">No</span></td>
+                        <td>
+                            <div class="gp-acciones">
+                                <button class="btn-editar" title="Editar"
+                                    data-bs-toggle="modal" data-bs-target="#modalProducto"
+                                    onclick="abrirModalEditar(5, 'Cartel aluminio', 'Accesorios', 7500, 0, 'Cartel de aluminio con impresión sublimada de alta resolución.', false)">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button class="btn-eliminar" title="Eliminar"
+                                    data-bs-toggle="modal" data-bs-target="#modalEliminar"
+                                    onclick="confirmarEliminar(5, 'Cartel aluminio')">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="gp-contador">
+                <span id="contadorProductos">Mostrando 5 productos</span>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="modalProductoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content gp-modal">
+
+                <div class="modal-header gp-modal-header">
+                    <h5 class="modal-title" id="modalProductoLabel">
+                        <i class="fa-solid fa-box" id="modalIcono"></i>
+                        <span id="modalTitulo">Agregar Producto</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body gp-modal-body">
+                    <form id="formProducto" novalidate>
+
+                        <input type="hidden" id="inputId">
+
+                        <div class="gp-form-grid">
+
+                            <div class="gp-campo-grupo gp-col-2">
+                                <label class="gp-label" for="inputDescripcion">
+                                    <i class="fa-solid fa-tag"></i> Descripción
+                                </label>
+                                <input type="text" id="inputDescripcion" class="gp-input"
+                                    placeholder="Nombre del producto" maxlength="50" required>
+                                <span class="gp-hint">Máximo 50 caracteres</span>
+                            </div>
+
+                            <div class="gp-campo-grupo">
+                                <label class="gp-label" for="inputCategoria">
+                                    <i class="fa-solid fa-layer-group"></i> Categoría
+                                </label>
+                                <select id="inputCategoria" class="gp-input gp-select-modal" required>
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option value="Ropa">Ropa</option>
+                                    <option value="Accesorios">Accesorios</option>
+                                    <option value="Envoltorios">Envoltorios</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+
+                            <div class="gp-campo-grupo">
+                                <label class="gp-label" for="inputPrecio">
+                                    <i class="fa-solid fa-colon-sign"></i> Precio (₡)
+                                </label>
+                                <input type="number" id="inputPrecio" class="gp-input"
+                                    placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+
+                            <div class="gp-campo-grupo">
+                                <label class="gp-label" for="inputExistencias">
+                                    <i class="fa-solid fa-warehouse"></i> Existencias
+                                </label>
+                                <input type="number" id="inputExistencias" class="gp-input"
+                                    placeholder="0" min="0" step="1" required>
+                            </div>
+
+                            <div class="gp-campo-grupo gp-col-2">
+                                <label class="gp-label" for="inputDetalle">
+                                    <i class="fa-solid fa-align-left"></i> Detalle
+                                </label>
+                                <textarea id="inputDetalle" class="gp-input gp-textarea"
+                                    placeholder="Descripción detallada del producto..."></textarea>
+                            </div>
+
+                            <div class="gp-campo-grupo">
+                                <label class="gp-label" for="inputImagen">
+                                    <i class="fa-solid fa-image"></i> Imagen
+                                </label>
+                                <input type="file" id="inputImagen" class="gp-input gp-input-file"
+                                    accept="image/*">
+                                <div class="gp-preview-contenedor">
+                                    <img id="previewImagen" src="" alt="" class="gp-preview oculto">
+                                </div>
+                            </div>
+
+                            <div class="gp-campo-grupo gp-campo-activo">
+                                <label class="gp-label">
+                                    <i class="fa-solid fa-toggle-on"></i> Estado
+                                </label>
+                                <div class="gp-switch-contenedor">
+                                    <label class="gp-switch">
+                                        <input type="checkbox" id="inputActivo" checked>
+                                        <span class="gp-slider"></span>
+                                    </label>
+                                    <span class="gp-switch-label" id="switchLabel">Activo</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer gp-modal-footer">
+                    <button type="button" class="gp-btn-cancelar" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> Cancelar
+                    </button>
+                    <button type="button" class="gp-btn-guardar" onclick="guardarProducto()">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content gp-modal">
+
+                <div class="modal-header gp-modal-header-danger">
+                    <h5 class="modal-title" id="modalEliminarLabel">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Eliminar Producto
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body gp-modal-body text-center">
+                    <i class="fa-solid fa-trash gp-icono-eliminar"></i>
+                    <p class="gp-texto-eliminar">
+                        ¿Estás seguro de que deseas eliminar<br>
+                        <strong id="nombreProductoEliminar"></strong>?
+                    </p>
+                    <p class="gp-texto-aviso">Esta acción no se puede deshacer.</p>
+                    <input type="hidden" id="idProductoEliminar">
+                </div>
+
+                <div class="modal-footer gp-modal-footer">
+                    <button type="button" class="gp-btn-cancelar" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i> Cancelar
+                    </button>
+                    <button type="button" class="gp-btn-eliminar" onclick="eliminarProducto()">
+                        <i class="fa-solid fa-trash"></i> Eliminar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fechaActual').textContent =
+            new Date().toLocaleDateString('es-CR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        document.getElementById('inputImagen').addEventListener('change', function () {
+            const preview = document.getElementById('previewImagen');
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    preview.src = e.target.result;
+                    preview.classList.remove('oculto');
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        document.getElementById('inputActivo').addEventListener('change', function () {
+            document.getElementById('switchLabel').textContent = this.checked ? 'Activo' : 'Inactivo';
+        });
+
+        function abrirModalAgregar() {
+            document.getElementById('modalTitulo').textContent = 'Agregar Producto';
+            document.getElementById('modalIcono').className = 'fa-solid fa-plus';
+            document.getElementById('formProducto').reset();
+            document.getElementById('inputId').value = '';
+            document.getElementById('previewImagen').classList.add('oculto');
+            document.getElementById('switchLabel').textContent = 'Activo';
+        }
+
+        function abrirModalEditar(id, descripcion, categoria, precio, existencias, detalle, activo) {
+            document.getElementById('modalTitulo').textContent = 'Editar Producto';
+            document.getElementById('modalIcono').className = 'fa-solid fa-pen';
+            document.getElementById('inputId').value = id;
+            document.getElementById('inputDescripcion').value = descripcion;
+            document.getElementById('inputCategoria').value = categoria;
+            document.getElementById('inputPrecio').value = precio;
+            document.getElementById('inputExistencias').value = existencias;
+            document.getElementById('inputDetalle').value = detalle;
+            document.getElementById('inputActivo').checked = activo;
+            document.getElementById('switchLabel').textContent = activo ? 'Activo' : 'Inactivo';
+            document.getElementById('previewImagen').classList.add('oculto');
+        }
+
+        function guardarProducto() {
+            const descripcion = document.getElementById('inputDescripcion').value.trim();
+            const categoria = document.getElementById('inputCategoria').value;
+            const precio = document.getElementById('inputPrecio').value;
+            const existencias = document.getElementById('inputExistencias').value;
+
+            if (!descripcion || !categoria || precio === '' || existencias === '') {
+                alert('Por favor completa todos los campos obligatorios.');
+                return;
+            }
+
+            bootstrap.Modal.getInstance(document.getElementById('modalProducto')).hide();
+        }
+
+        function confirmarEliminar(id, nombre) {
+            document.getElementById('idProductoEliminar').value = id;
+            document.getElementById('nombreProductoEliminar').textContent = nombre;
+        }
+
+        function eliminarProducto() {
+            bootstrap.Modal.getInstance(document.getElementById('modalEliminar')).hide();
+        }
+
+        function filtrarTabla() {
+            const textoBusqueda = document.getElementById('filtroProducto').value.toLowerCase();
+            const categoriaFiltro = document.getElementById('filtroCategoria').value.toLowerCase();
+            const filas = document.querySelectorAll('#tablaProductos tbody tr');
+            let visibles = 0;
+
+            filas.forEach(fila => {
+                const descripcion = fila.querySelector('.col-descripcion').textContent.toLowerCase();
+                const categoria = fila.querySelector('.gp-badge').textContent.toLowerCase();
+                const coincideTexto = descripcion.includes(textoBusqueda);
+                const coincideCategoria = categoriaFiltro === '' || categoria === categoriaFiltro;
+
+                if (coincideTexto && coincideCategoria) {
+                    fila.style.display = '';
+                    visibles++;
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+
+            document.getElementById('contadorProductos').textContent =
+                `Mostrando ${visibles} producto${visibles !== 1 ? 's' : ''}`;
+        }
+    </script>
+
+</body>
+</html>

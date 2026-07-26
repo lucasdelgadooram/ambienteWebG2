@@ -1,0 +1,144 @@
+.caracteristicas{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    padding:40px;
+}
+
+.item{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    width:260px;
+}
+
+.circulo{
+    width:70px;
+    height:70px;
+    border:2px solid #53b2f1;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.3s;
+}
+
+.circulo i{
+    font-size:30px;
+    color:#53b2f1;
+    transition:.3s;
+}
+
+.item:hover .circulo{
+    background:#53b2f1;
+}
+
+.item:hover .circulo i{
+    color:white;
+}
+
+.texto h3{
+    color:white;
+    font-size:20px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.texto p{
+    margin:0;
+    color:white;
+    font-size:15px;
+}
+
+.contenedorF{
+    background:#276b97;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:40px;
+    padding:40px 0;
+}
+
+.pocoNosotros{
+    margin-right:160px;
+    color:white;
+}
+
+.pocoNosotros h2{
+    font-weight:bold;
+}
+
+.pocoNosotros h3{
+    font-weight:bold;
+    padding:4px 0;
+}
+
+.btnFooter{
+    background:white;
+    border:none;
+    border-radius:14px;
+    font-size:14px;
+    width:120px;
+    height:40px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:black;
+    margin-left:8px;
+    transition:.3s;
+}
+
+.btnFooter:hover{
+    background:#ffe27a;
+    color:black;
+    transform:translateY(-4px);
+}
+
+.redesSociales{
+    color:white;
+    margin-bottom:30px;
+}
+
+.redesSociales span{
+    font-weight:bold;
+}
+
+#redes{
+    margin-right:100px;
+}
+
+#redes li{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:12px 0;
+}
+
+#redes a{
+    color:white;
+    text-decoration:none;
+}
+
+#redes a:hover{
+    color:#ffe27a;
+}
+
+#divide{
+    margin-right:120px;
+    width:1px;
+    height:300px;
+    background:white;
+    border:none;
+}
+
+.derechosReservados{
+    padding:10px;
+    background:#276b97;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-weight:bold;
+}

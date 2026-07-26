@@ -1,0 +1,123 @@
+#logo{
+    width: 65px;
+    height: 70px;
+    margin-left: 20px;
+}
+
+.navbar{
+    background-color: #77c7f8;
+}
+
+#userProfile{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+#comment{
+    margin-left: 20px;
+}
+
+#comment span{
+    color:#fff;
+    font-weight:bold;
+    font-size:14px;
+}
+
+#buscarBtn{
+    background:#fff;
+    border:none;
+    border-radius:14px;
+    font-size:14px;
+    width:75px;
+    height:40px;
+    transition:.3s;
+}
+
+#buscarBtn:hover{
+    background:#ffe27a;
+    color:#000;
+    transform:translateY(-4px);
+}
+
+#barra{
+    border-radius:50px;
+    width:500px;
+}
+
+#barraBusqueda{
+    margin-left:40px;
+}
+
+#correoUser{
+    color:#fff;
+    font-weight:bold;
+    transition:.3s;
+}
+
+#correoUser:hover{
+    color:#ffe27a;
+    transform:translateY(-4px);
+}
+
+.nav-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+}
+
+.iconoNav{
+    font-size:28px;
+    color:white;
+    margin-left:8px;
+    margin-right:8px;
+    transition:.3s;
+}
+
+.iconoNav:hover{
+    color:#ffe27a;
+}
+
+.iconoNav2{
+    color:white;
+    margin-right:6px;
+}
+
+#secondNavbar{
+    background:#5cbffd;
+}
+
+#lista{
+    display:flex;
+    gap:150px;
+}
+
+#lista li{
+    color:white;
+    padding:4px;
+}
+
+.nav-item a{
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.nav-item a:hover{
+    color:#ffe27a;
+    transform:translateY(-3px);
+}
+
+.dropdown-menu{
+    background:#5cbffd;
+}

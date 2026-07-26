@@ -1,0 +1,142 @@
+
+
+.page-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:40px auto 20px;
+
+    width:90%;
+
+}
+
+
+
+.page-header h2{
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    margin:0;
+
+}
+
+
+
+.page-header .btn-primary{
+
+    background:#3daaf3;
+    border:none;
+    padding:12px 20px;
+    border-radius:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+
+.page-header .btn-primary:hover{
+    background:#ffe27a;
+    color:black;
+    transform:translateY(-3px);
+}
+
+
+.glass-card{
+    width:90%;
+    margin:auto;
+    background:rgba(255,255,255,.9);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:
+    0 12px 35px rgba(0,0,0,.15);
+}
+
+
+
+.table{
+    margin:0;
+}
+
+.table thead{
+    background:#3daaf3;
+    color:white;
+
+}
+
+
+.table thead th{
+    padding:18px;
+    font-size:16px;
+    text-align:center;
+    border:none;
+
+}
+
+
+.table tbody td{
+    padding:15px;
+    text-align:center;
+    vertical-align:middle;
+
+}
+
+
+.table tbody tr{
+    transition:.3s;
+}
+
+
+.table tbody tr:hover{
+    background:#eaf7ff;
+
+}
+
+
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+
+.actions .btn{
+    border-radius:10px;
+    padding:8px 14px;
+    font-weight:bold;
+    border:none;
+    transition:.3s;
+}
+
+
+.actions .btn-info{
+    background:#5cbffd;
+    color:white;
+}
+
+
+
+.actions .btn-info:hover{
+    background:#ffe27a;
+    color:black;
+    transform:translateY(-2px);
+
+}
+
+
+.actions .btn-danger{
+    background:#dc3545;
+    color:white;
+}
+
+.actions .btn-danger:hover{
+    background:#ff6b6b;
+    transform:translateY(-2px);
+
+}

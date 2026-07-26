@@ -1,0 +1,168 @@
+.contenedor{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:80vh;
+    padding:60px 40px;
+    gap:80px;
+}
+
+.twoHalf{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.twoHalf img{
+    width:420px;
+    max-width:100%;
+    height:auto;
+}
+
+.cards-login{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card-login{
+    background:white;
+    width:520px;
+    padding:45px;
+    border-radius:20px;
+    box-shadow:0 12px 35px rgba(0,0,0,.15);
+}
+
+.top{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.top h2{
+    font-size:36px;
+    font-weight:bold;
+    color:#2d2d2d;
+}
+
+.top p{
+    color:#666;
+    margin-top:15px;
+    line-height:1.5;
+}
+
+
+.medio{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+
+
+.correos,
+.claves{
+    display:flex;
+    flex-direction:column;
+}
+
+.correos span,
+.claves span{
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#444;
+}
+
+.input-login{
+    width:100%;
+    padding:12px 16px;
+    border:1px solid #d4d4d4;
+    border-radius:12px;
+    outline:none;
+    transition:.3s;
+}
+
+.input-login:focus{
+    border-color:#4aa9e8;
+    box-shadow:0 0 8px rgba(74,169,232,.3);
+}
+
+.junto{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:5px;
+}
+
+.bottom-card{
+    margin-top:35px;
+}
+
+.button-login{
+    width:100%;
+    border:none;
+    background:#3daaf3;
+    color:white;
+    padding:14px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.button-login:hover{
+    background:#ffe27a;
+    color:black;
+    transform:translateY(-3px);
+}
+
+
+.links{
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.links a{
+    text-decoration:none;
+    color:#3daaf3;
+    font-size:14px;
+    transition:.3s;
+}
+
+.links a:hover{
+    color:#f5b700;
+}
+
+.alert{
+    margin:20px 0;
+}
+
+
+@media(max-width:1000px){
+
+    .contenedor{
+        flex-direction:column;
+        gap:40px;
+    }
+
+    .card-login{
+        width:100%;
+        max-width:520px;
+    }
+
+    .twoHalf img{
+        width:280px;
+    }
+
+    .links{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+}
+
+

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Pedidos - Paluse</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/indexStyles.css">
+    <link rel="stylesheet" href="../css/historialPedidosStyles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <a href="../index.html">
+                    <img src="../resources/logoPaluseNew.png" id="logo" alt="Logo Paluse">
+                </a>
+
+                <div id="comment">
+                    <span>Envios en todo Costa Rica</span>
+                    <i class="fa-solid fa-truck iconoNav"></i>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarPrincipal" aria-controls="navbarPrincipal"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarPrincipal">
+
+                    <form class="d-flex" role="search" id="barraBusqueda">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar"
+                            id="barra">
+                        <button class="btn btn-outline-" type="button" id="buscarBtn">Buscar</button>
+                    </form>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fa-solid fa-heart iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./carrito.html">
+                                <i class="fa-solid fa-cart-shopping iconoNav"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./login.html">
+                                <img src="../resources/profileImg.jpg" id="userProfile" alt="Perfil usuario">
+                                <span id="correoUser">usuario1@gmail.com</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="navbar navbar-expand-lg" id="secondNavbar">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse show" id="navbarSecundaria">
+                <ul class="navbar-nav mx-auto" id="lista">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="./catalogo.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-layer-group iconoNav2"></i>
+                            Catálogo
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Ropa</a></li>
+                            <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                            <li><a class="dropdown-item" href="#">Envoltorios</a></li>
+                            <li><a class="dropdown-item" href="#">Otros</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-info iconoNav2"></i>
+                        <a class="nav-link" href="./sobreNosotros.html">Acerca de nosotros</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-phone iconoNav2"></i>
+                            Contacto
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./contactoRedes.html">Redes</a></li>
+                            <li><a class="dropdown-item" href="./formularioContacto.html">Formulario Contacto</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-headphones iconoNav2"></i>
+                        <a class="nav-link" href="./soporte.html">Soporte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <i class="fa-solid fa-door-closed iconoNav2"></i>
+                        <a class="nav-link" href="#">Cerrar sesión</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="historial-page">
+
+        <nav class="breadcrumb-historial" aria-label="breadcrumb">
+            <a href="../index.html">Inicio</a>
+            <span>/</span>
+            <a href="#">Usuario</a>
+            <span>/</span>
+            <span class="breadcrumb-actual">Historial Pedidos</span>
+        </nav>
+
+        <!-- Título -->
+        <h2 class="titulo-historial">
+            <i class="fa-solid fa-grip"></i>
+            Historial De Pedidos
+        </h2>
+
+        <div class="pedidos-card">
+
+            <h3 class="pedidos-card-titulo">Tus Pedidos</h3>
+
+            <div class="pedidos-lista">
+
+                <article class="pedido-fila">
+                    <span class="pedido-nombre">Pedido1</span>
+                    <span class="pedido-fecha">10/3/2024</span>
+                    <span class="pedido-estado estado-completado">Completado</span>
+                </article>
+
+                <article class="pedido-fila">
+                    <span class="pedido-nombre">Pedido2</span>
+                    <span class="pedido-fecha">10/7/2025</span>
+                    <span class="pedido-estado estado-completado">Completado</span>
+                </article>
+
+                <article class="pedido-fila">
+                    <span class="pedido-nombre">Pedido3</span>
+                    <span class="pedido-fecha">29/08/2025</span>
+                    <span class="pedido-estado estado-completado">Completado</span>
+                </article>
+
+                <article class="pedido-fila">
+                    <span class="pedido-nombre">Pedido4</span>
+                    <span class="pedido-fecha">19/09/2025</span>
+                    <span class="pedido-estado estado-completado">Completado</span>
+                </article>
+
+                <article class="pedido-fila">
+                    <span class="pedido-nombre">Pedido5</span>
+                    <span class="pedido-fecha">02/02/26</span>
+                    <span class="pedido-estado estado-completado">Completado</span>
+                </article>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <section class="proveedores">
+        <p class="proveedores-titulo">Nuestros Proveedores</p>
+        <div class="proveedores-logos">
+            <span class="prov-epson">EPSON</span>
+            <span class="prov-colormake">color<b>make</b></span>
+            <span class="prov-hanrun"><b>H</b>anrun paper</span>
+            <span class="prov-fauca">FAUCA</span>
+            <span class="prov-xtool"><span class="prov-x">x</span>TOOL</span>
+        </div>
+    </section>
+
+</body>
+
+<footer>
+
+    <section class="caracteristicas">
+        <div class="item">
+            <div class="circulo">
+                <i class="fa-solid fa-tag"></i>
+            </div>
+            <div class="texto">
+                <h3>Precios Competitivos</h3>
+                <p>Los mejores regalos al mejor precio.</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="circulo">
+                <i class="fa-solid fa-headphones"></i>
+            </div>
+            <div class="texto">
+                <h3>Soporte Experto</h3>
+                <p>Necesitas ayuda y nosotros te la daremos.</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="circulo">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+            <div class="texto">
+                <h3>Pago Seguro</h3>
+                <p>Paga con total confianza.</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="circulo">
+                <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <div class="texto">
+                <h3>Entrega Rápida</h3>
+                <p>En toda Costa Rica.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="contenedorF">
+
+        <section class="pocoNosotros">
+            <h2>Un poco de nosotros</h2>
+            <h3>Misión:</h3>
+            <p>
+                Brindar recuerdos a nuestros clientes a través de productos de calidad
+                <br>que satisfagan las necesidades de los interesados.
+            </p>
+            <h3>Visión:</h3>
+            <p>
+                Ser una organización reconocida por la calidad de nuestros productos y la
+                <br>confianza de nuestros clientes en el proyecto en crecimiento Paluse.
+            </p>
+            <span>Quieres ver toda nuestra historia?</span>
+            <button type="button" class="btnFooter">Sigue por aquí</button>
+        </section>
+
+        <hr id="divide">
+
+        <section class="redesSociales">
+            <span>Encuéntranos en nuestras redes sociales:</span>
+            <ul id="redes">
+                <li>
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    <a href="./catalogo.html">Catálogo</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-info"></i>
+                    <a href="./sobreNosotros.html">Sobre Nosotros</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-circle-question"></i>
+                    <a href="./soporte.html">Ayuda</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-at"></i>
+                    <a href="./formularioContacto.html">Contacto</a>
+                </li>
+                <li>
+                    <i class="fa-regular fa-percent"></i>
+                    <a href="#">Descuentos</a>
+                </li>
+            </ul>
+        </section>
+
+    </div>
+
+    <span class="derechosReservados">@2026 Paluse, todos los derechos reservados</span>
+
+</footer>
+
+</html>

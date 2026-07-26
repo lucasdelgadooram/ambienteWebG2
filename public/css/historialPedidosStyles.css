@@ -1,0 +1,242 @@
+.historial-page {
+    padding: 40px 7% 60px;
+    background-color: #e8fbff;
+    background-image:
+        radial-gradient(#9bd0ff 18%, transparent 19%),
+        radial-gradient(#9bd0ff 18%, transparent 19%);
+    background-size: 90px 90px;
+    background-position: 0 0, 45px 45px;
+    min-height: 60vh;
+}
+
+.breadcrumb-historial {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2f67b2;
+    margin-bottom: 28px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #2f67b2;
+}
+
+.breadcrumb-historial a {
+    color: #2f67b2;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.breadcrumb-historial a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-historial span {
+    color: #2f67b2;
+}
+
+.breadcrumb-historial .breadcrumb-actual {
+    font-weight: 700;
+}
+
+.titulo-historial {
+    color: #2f67b2;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 38px;
+}
+
+.titulo-historial i {
+    margin-right: 12px;
+    font-size: 40px;
+    vertical-align: middle;
+}
+
+.pedidos-card {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: #b8e4f9;
+    border-radius: 18px;
+    padding: 36px 40px 40px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.pedidos-card-titulo {
+    color: #1a5a9a;
+    font-size: 36px;
+    font-weight: 900;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pedidos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pedido-fila {
+    background-color: #4a9fd4;
+    border-radius: 10px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.25s, transform 0.2s;
+}
+
+.pedido-fila:hover {
+    background-color: #3a8ec3;
+    transform: translateY(-2px);
+}
+
+.pedido-nombre,
+.pedido-fecha,
+.pedido-estado {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.pedido-nombre {
+    flex: 1;
+}
+
+.pedido-fecha {
+    flex: 1;
+    text-align: center;
+}
+
+.pedido-estado {
+    flex: 1;
+    text-align: right;
+}
+
+.estado-completado {
+    color: #ffffff;
+}
+
+.estado-pendiente {
+    color: #ffe27a;
+}
+
+.estado-cancelado {
+    color: #ffaaaa;
+}
+
+.estado-en-proceso {
+    color: #b3f0ff;
+}
+
+.proveedores {
+    background-color: #1c4e7a;
+    padding: 20px 7%;
+    text-align: center;
+}
+
+.proveedores-titulo {
+    color: #93d2ff;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+}
+
+.proveedores-logos {
+    background-color: #ffffff;
+    padding: 24px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 55px;
+    flex-wrap: wrap;
+}
+
+.prov-epson {
+    font-size: 28px;
+    font-weight: 900;
+    font-family: 'Georgia', serif;
+    color: #1a2f5e;
+    letter-spacing: -1px;
+}
+
+.prov-colormake {
+    font-size: 16px;
+    color: #555;
+}
+
+.prov-colormake b { color: #3a3a3a; }
+
+.prov-hanrun {
+    font-size: 16px;
+    color: #444;
+}
+
+.prov-hanrun b {
+    font-size: 26px;
+    color: #c62828;
+    font-family: 'Georgia', serif;
+    vertical-align: middle;
+}
+
+.prov-fauca {
+    font-size: 19px;
+    font-weight: 900;
+    color: #ffffff;
+    background-color: #1565c0;
+    padding: 5px 14px;
+    letter-spacing: 2px;
+    border-radius: 3px;
+}
+
+.prov-xtool {
+    font-size: 19px;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: 1px;
+}
+
+.prov-x {
+    color: #2e7d32;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+@media (max-width: 768px) {
+    .historial-page {
+        padding: 30px 5% 40px;
+    }
+
+    .titulo-historial {
+        font-size: 32px;
+    }
+
+    .pedidos-card {
+        padding: 24px 20px 28px;
+    }
+
+    .pedidos-card-titulo {
+        font-size: 26px;
+    }
+
+    .pedido-fila {
+        padding: 16px 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .pedido-fecha,
+    .pedido-estado {
+        text-align: left;
+    }
+
+    .proveedores-logos {
+        gap: 28px;
+        padding: 20px;
+    }
+}

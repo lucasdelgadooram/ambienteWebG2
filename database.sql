@@ -190,5 +190,33 @@ CREATE TABLE resena (
 ) ENGINE = InnoDB;
 
 INSERT INTO rol (rol) VALUES ('ADMIN'), ('VENDEDOR'), ('USER');
+
+INSERT INTO usuario (
+  username,
+  password,
+  nombre,
+  apellidos,
+  correo,
+  telefono,
+  ruta_imagen,
+  activo,
+  politicas_aceptadas
+) VALUES (
+  'admin',
+  '$2y$10$VHQ05L9g7REVO1LfmsSl.esV.UdLR9sgpOD5iw7oJtd.FavkHFlCq', #1234
+  'Admin',
+  'Paluse',
+  'admin@paluse.com',
+  '00000000',
+  NULL,
+  TRUE,
+  TRUE
+);
+
+INSERT INTO usuario_rol (id_usuario, id_rol)
+SELECT usuario.id_usuario, rol.id_rol
+FROM usuario, rol
+WHERE usuario.username = 'admin'
+  AND rol.rol = 'ADMIN';
     
  

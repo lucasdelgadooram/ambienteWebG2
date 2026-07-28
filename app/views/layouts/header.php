@@ -168,16 +168,63 @@
 
                 </li>
 
-                <!-- Cerrar sesión -->
-                <?php if(isset($_SESSION['user_id'])): ?>
+                <!-- Opciones para usuarios con sesión iniciada -->
+<?php if(isset($_SESSION['user_id'])): ?>
 
-                    <li class="nav-item">
-                        <i class="fa-solid fa-door-closed iconoNav2"></i>
-                        <a class="nav-link" href="<?= BASE_URL ?>/auth/logout">
-                            Cerrar sesión
-                        </a>
-                    </li>
-                <?php endif; ?>
+    <!-- Administración de ventas -->
+    <li class="nav-item dropdown">
+
+        <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+        >
+            <i class="fa-solid fa-cash-register iconoNav2"></i>
+            Administración
+        </a>
+
+        <ul class="dropdown-menu">
+
+            <li>
+                <a
+                    class="dropdown-item"
+                    href="<?= BASE_URL ?>/factura/index"
+                >
+                    <i class="fa-solid fa-file-invoice"></i>
+                    Facturas
+                </a>
+            </li>
+
+            <li>
+                <a
+                    class="dropdown-item"
+                    href="<?= BASE_URL ?>/venta/index"
+                >
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Ventas
+                </a>
+            </li>
+
+        </ul>
+
+    </li>
+
+    <!-- Cerrar sesión -->
+    <li class="nav-item">
+
+        <i class="fa-solid fa-door-closed iconoNav2"></i>
+
+        <a
+            class="nav-link"
+            href="<?= BASE_URL ?>/auth/logout"
+        >
+            Cerrar sesión
+        </a>
+
+    </li>
+
+<?php endif; ?>
             </ul>
 
         </div>

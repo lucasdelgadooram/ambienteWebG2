@@ -78,32 +78,61 @@ CREATE TABLE producto (
 ) ENGINE = InnoDB;
 
 CREATE TABLE factura (
-  id_factura INT NOT NULL AUTO_INCREMENT,
-  id_usuario INT NOT NULL,
-  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  total DECIMAL(12,2) CHECK (total > 0),
-  estado ENUM('Activa', 'En proceso', 'Enviado', 'Completado', 'Anulada') NOT NULL,
-  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id_factura),
-  INDEX ndx_id_usuario (id_usuario),
-  FOREIGN KEY fk_factura_usuario (id_usuario) REFERENCES usuario(id_usuario)
+    id_factura INT NOT NULL AUTO_INCREMENT,
+    id_usuario INT NOT NULL,
+    fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    total DECIMAL(12,2) NOT NULL DEFAULT 0.00,
+    estado ENUM(
+        'Activa',
+        'En proceso',
+        'Enviado',
+        'Completado',
+        'Anulada'
+    ) NOT NULL DEFAULT 'Activa',
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_factura),
+    INDEX ndx_factura_usuario (id_usuario),
+    CONSTRAINT fk_factura_usuario
+        FOREIGN KEY (id_usuario)
+        REFERENCES usuario(id_usuario)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    CONSTRAINT chk_factura_total
+        CHECK (total >= 0)
 ) ENGINE = InnoDB;
 
 CREATE TABLE venta (
-  id_venta INT NOT NULL AUTO_INCREMENT,
-  id_factura INT NOT NULL,
-  id_producto INT NOT NULL,
-  precio_historico DECIMAL(12,2) CHECK (precio_historico >= 0),
-  cantidad INT UNSIGNED CHECK (cantidad > 0),
-  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id_venta),
-  INDEX ndx_factura (id_factura),
-  INDEX ndx_producto (id_producto),
-  UNIQUE (id_factura, id_producto),
-  FOREIGN KEY fk_venta_factura (id_factura) REFERENCES factura(id_factura),
-  FOREIGN KEY fk_venta_producto (id_producto) REFERENCES producto(id_producto)
+    id_venta INT NOT NULL AUTO_INCREMENT,
+    id_factura INT NOT NULL,
+    id_producto INT NOT NULL,
+    precio_historico DECIMAL(12,2) NOT NULL,
+    cantidad INT UNSIGNED NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id_venta),
+    INDEX ndx_venta_factura (id_factura),
+    INDEX ndx_venta_producto (id_producto),
+    UNIQUE KEY uk_factura_producto (
+        id_factura,
+        id_producto
+    ),
+    CONSTRAINT fk_venta_factura
+        FOREIGN KEY (id_factura)
+        REFERENCES factura(id_factura)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_venta_producto
+        FOREIGN KEY (id_producto)
+        REFERENCES producto(id_producto)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    CONSTRAINT chk_venta_precio
+        CHECK (precio_historico >= 0),
+    CONSTRAINT chk_venta_cantidad
+        CHECK (cantidad > 0)
 ) ENGINE = InnoDB;
 
 CREATE TABLE favoritos (

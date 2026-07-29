@@ -174,41 +174,83 @@
     <!-- Administración de ventas -->
     <li class="nav-item dropdown">
 
-        <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-        >
-            <i class="fa-solid fa-cash-register iconoNav2"></i>
-            Administración
-        </a>
+    <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        role="button"
+        data-bs-toggle="dropdown"
+    >
+        <i class="fa-solid fa-cash-register iconoNav2"></i>
+        Administración
+    </a>
 
-        <ul class="dropdown-menu">
+    <ul class="dropdown-menu">
 
-            <li>
-                <a
-                    class="dropdown-item"
-                    href="<?= BASE_URL ?>/factura/index"
-                >
-                    <i class="fa-solid fa-file-invoice"></i>
-                    Facturas
-                </a>
-            </li>
+        <li>
+            <a
+                class="dropdown-item"
+                href="<?= BASE_URL ?>/factura/index"
+            >
+                <i class="fa-solid fa-file-invoice"></i>
+                Facturas
+            </a>
+        </li>
 
-            <li>
-                <a
-                    class="dropdown-item"
-                    href="<?= BASE_URL ?>/venta/index"
-                >
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    Ventas
-                </a>
-            </li>
+        <li>
+            <a
+                class="dropdown-item"
+                href="<?= BASE_URL ?>/venta/index"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+                Ventas
+            </a>
+        </li>
 
-        </ul>
+        <li><hr class="dropdown-divider"></li>
 
-    </li>
+        <li>
+            <a
+                class="dropdown-item"
+                href="<?= BASE_URL ?>/rol/index"
+            >
+                <i class="fa-solid fa-user-shield"></i>
+                Roles
+            </a>
+        </li>
+
+        <li>
+            <a
+                class="dropdown-item"
+                href="<?= BASE_URL ?>/categoria/index"
+            >
+                <i class="fa-solid fa-tags"></i>
+                Categorías
+            </a>
+        </li>
+
+        <li>
+            <a
+                class="dropdown-item"
+                href="<?= BASE_URL ?>/producto/index"
+            >
+                <i class="fa-solid fa-box"></i>
+                Productos
+            </a>
+        </li>
+
+        <li>
+            <a
+                class="dropdown-item"
+                href="<?= BASE_URL ?>/user/index"
+            >
+                <i class="fa-solid fa-users"></i>
+                Usuarios
+            </a>
+        </li>
+
+    </ul>
+
+</li>
 
     <!-- Cerrar sesión -->
     <li class="nav-item">

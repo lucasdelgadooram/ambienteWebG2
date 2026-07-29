@@ -19,7 +19,7 @@ class Controller {
     }
 
     //Tener rol, espera un rol para buscar.
-    private function tieneRol($rolBuscado) {
+    public function tieneRol($rolBuscado) {
     //basicamente que si alguien intenta iniciar sin la variable se session roles entonces retorna falso
         if (!isset($_SESSION['roles'])) {
         return false;

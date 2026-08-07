@@ -27,6 +27,30 @@ class Producto {
         return $productos;
     }
 
+    public function getActive() {
+    $query = "
+        SELECT
+            producto.*,
+            categoria.descripcion
+                AS categoria_descripcion
+        FROM producto
+        INNER JOIN categoria
+            ON producto.id_categoria =
+               categoria.id_categoria
+        WHERE producto.activo = 1
+          AND producto.existencias > 0
+        ORDER BY producto.id_producto DESC
+    ";
+
+    $result = $this->db->query($query);
+
+    if (!$result) {
+        return [];
+    }
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
     public function getById($id) {
         $query = "SELECT * FROM producto WHERE id_producto = ?";
         $stmt = $this->db->prepare($query);

@@ -17,6 +17,17 @@ class ProductoController extends Controller {
         $this->categoriaModel = $this->model('Categoria');
     }
 
+    public function catalogo() {
+    $this->view('producto/catalogo', [
+        'productos' =>
+            $this->productoModel->getActive(),
+
+        'css' => [
+            'catalogoStyles.css'
+        ]
+    ]);
+}
+
     public function index() {
         $this->view('producto/index', [
             'productos' => $this->productoModel->getAll(),

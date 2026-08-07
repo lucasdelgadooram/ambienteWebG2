@@ -15,6 +15,7 @@
             <th>ID</th>
             <th>Usuario</th>
             <th>Nombre</th>
+            <th>Rol</th>
             <th>Correo</th>
             <th>Acciones</th>
         </tr>
@@ -33,6 +34,11 @@
             <td>
                 <?= htmlspecialchars($user['nombre'] . ' ' . $user['apellidos']) ?>
             </td>
+
+            <td>
+                <?= htmlspecialchars($user['nombre_rol']) ?>
+            </td>
+
             <td>
                 <?= htmlspecialchars($user['correo']) ?>
             </td>

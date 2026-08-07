@@ -42,6 +42,19 @@
             </div>
 
             <div class="form-group mb-3">
+                <label>Rol</label>
+                <select name="id_rol" class="form-control" required>
+                    <option value="">Seleccione un rol</option>
+                    <?php foreach ($data['roles'] as $rol): ?>
+                        <option value="<?= $rol['id_rol'] ?>">
+                            <?= htmlspecialchars($rol['rol']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+
+            </div>
+
+            <div class="form-group mb-3">
                 <label>Imagen (URL)</label>
                 <input type="text" name="ruta_imagen" class="form-control" placeholder="https://imagen.com/foto.jpg">
             </div>

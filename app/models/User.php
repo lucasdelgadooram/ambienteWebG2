@@ -9,14 +9,26 @@ class User {
     }
 
     public function getAll() {
-        $query = "SELECT * FROM usuario WHERE activo = 1 ORDER BY id_usuario DESC";
+
+        $query = "SELECT usuario.*, rol.rol AS nombre_rol FROM usuario
+            INNER JOIN usuario_rol
+                ON usuario.id_usuario = usuario_rol.id_usuario
+            INNER JOIN rol
+                ON usuario_rol.id_rol = rol.id_rol
+            WHERE usuario.activo = 1
+            ORDER BY usuario.id_usuario DESC
+        ";
+
         $result = $this->db->query($query);
+
         $users = [];
+
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $users[] = $row;
             }
         }
+
         return $users;
     }
 
@@ -65,11 +77,25 @@ class User {
 
     public function create($data) {
 
-        // Insertar usuario, create metodo por default
-        $query = "INSERT INTO usuario (username, password, nombre, apellidos, correo, telefono, ruta_imagen, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        // Insertar usuario
+        $query = "INSERT INTO usuario (username, password, nombre, apellidos, correo, telefono, ruta_imagen, activo)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
         $stmt = $this->db->prepare($query);
+
         $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
-        $stmt->bind_param("sssssssi",$data['username'],$hashedPassword,$data['nombre'],$data['apellidos'],$data['correo'], $data['telefono'],$data['ruta_imagen'],$data['activo']  );
+
+        $stmt->bind_param(
+            "sssssssi",
+            $data['username'],
+            $hashedPassword,
+            $data['nombre'],
+            $data['apellidos'],
+            $data['correo'],
+            $data['telefono'],
+            $data['ruta_imagen'],
+            $data['activo']
+        );
 
         if (!$stmt->execute()) {
             return false;
@@ -78,29 +104,19 @@ class User {
         // Obtener el id del usuario recién creado
         $idUsuario = $this->db->insert_id;
 
-        // Buscar el id del rol USER
-        $query = "SELECT id_rol FROM rol WHERE rol = ?";
-        $stmt = $this->db->prepare($query); 
-        $rol = "USER";
-        $stmt->bind_param("s", $rol);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
-
-        if ($resultado->num_rows == 0) {
-            return false;
-        }
-
-        $rolUsuario = $resultado->fetch_assoc();
-
-    
+        // Asignar el rol seleccionado
         $query = "INSERT INTO usuario_rol (id_usuario, id_rol) VALUES (?, ?)";
+
         $stmt = $this->db->prepare($query);
 
-        $stmt->bind_param("ii",$idUsuario,$rolUsuario['id_rol']
+        $stmt->bind_param(
+            "ii",
+            $idUsuario,
+            $data['id_rol']
         );
 
         return $stmt->execute();
-    }
+}
 
     public function update($id, $data) {
 
@@ -170,5 +186,15 @@ class User {
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $id);
         return $stmt->execute();
+    }
+
+    public function existeCorreo($correo){
+
+        $query = "SELECT id_usuario FROM usuario WHERE correo=?";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bind_param("s",$correo);
+        $stmt->execute();
+        return $stmt->get_result()->num_rows > 0;
     }
 }

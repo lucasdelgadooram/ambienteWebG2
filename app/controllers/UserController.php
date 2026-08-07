@@ -6,6 +6,8 @@ class UserController extends Controller {
 
     public function __construct() {
         session_start();
+
+
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('/auth/index');
         }
@@ -19,68 +21,71 @@ class UserController extends Controller {
 
     public function create() {
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Cargar los roles para el formulario
+    $rolModel = $this->model('Rol');
+    $roles = $rolModel->getAll();
 
-            $data = [
-                'username' => $_POST['username'] ?? '',
-                'password' => $_POST['password'] ?? '',
-                'nombre' => $_POST['nombre'] ?? '',
-                'apellidos' => $_POST['apellidos'] ?? '',
-                'correo' => $_POST['correo'] ?? '',
-                'telefono' => $_POST['telefono'] ?? '',
-                'ruta_imagen' => $_POST['ruta_imagen'] ?? '',
-                'activo' => 1
-            ];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            // Validaciones básicas
-            if (
-                empty($data['username']) ||
-                empty($data['password']) ||
-                empty($data['nombre']) ||
-                empty($data['correo'])
-            ) {
-                $this->view('usuario/create', [
-                    'error' => 'Los campos obligatorios deben estar llenos'
-                ]);
-                return;
-            }
+        $data = [
+            'username' => $_POST['username'] ?? '',
+            'password' => $_POST['password'] ?? '',
+            'nombre' => $_POST['nombre'] ?? '',
+            'apellidos' => $_POST['apellidos'] ?? '',
+            'correo' => $_POST['correo'] ?? '',
+            'telefono' => $_POST['telefono'] ?? '',
+            'ruta_imagen' => $_POST['ruta_imagen'] ?? '',
+            'id_rol' => $_POST['id_rol'] ?? '',
+            'activo' => 1
+        ];
 
-
-            // Validar correo repetido
-            if($this->userModel->getByEmail($data['correo'])){
-                $this->view('usuario/create', [
-                    'error' => 'El correo ya está registrado'
-                ]);
-                return;
-            }
-
-
-            // Validar username repetido
-            if($this->userModel->getByUsername($data['username'])){
-                $this->view('usuario/create', [
-                    'error' => 'El usuario ya existe'
-                ]);
-                return;
-            }
-
-            // Crear usuario
-            $resultado = $this->userModel->create($data);
-
-            if($resultado){
-                $this->redirect('/user/index');
-
-            }else{
-                $this->view('usuario/create', [
-                    'error' => 'No se pudo crear el usuario'
-                ]);
-            }
-
-
-        } else {
-            $this->view('usuario/create');
+        // Validaciones básicas
+        if (empty($data['username']) || empty($data['password']) || empty($data['nombre']) || empty($data['correo']) || empty($data['id_rol'])) {
+            $this->view('usuario/create', [
+                'error' => 'Los campos obligatorios deben estar llenos.',
+                'roles' => $roles
+            ]);
+            return;
         }
 
+        // Validar correo repetido
+        if ($this->userModel->getByEmail($data['correo'])) {
+            $this->view('usuario/create', [
+                'error' => 'El correo ya está registrado.',
+                'roles' => $roles
+            ]);
+            return;
+        }
+
+        // Validar username repetido
+        if ($this->userModel->getByUsername($data['username'])) {
+            $this->view('usuario/create', [
+                'error' => 'El usuario ya existe.',
+                'roles' => $roles
+            ]);
+            return;
+        }
+
+        // Crear usuario
+        $resultado = $this->userModel->create($data);
+
+        if ($resultado) {
+            $this->redirect('/user/index');
+        } else {
+            $this->view('usuario/create', [
+                'error' => 'No se pudo crear el usuario.',
+                'roles' => $roles
+            ]);
+        }
+
+    } else {
+
+        $this->view('usuario/create', [
+            'roles' => $roles
+        ]);
+
     }
+}
 
     public function edit($id = null) {
 

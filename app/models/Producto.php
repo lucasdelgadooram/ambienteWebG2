@@ -114,4 +114,25 @@ class Producto {
 
         return $stmt->execute();
     }
+
+    public function getActiveByCategoria($categoria) {
+    $query = "
+        SELECT
+            producto.*,
+            categoria.descripcion AS categoria_descripcion
+        FROM producto
+        INNER JOIN categoria
+            ON producto.id_categoria = categoria.id_categoria
+        WHERE producto.activo = 1
+          AND producto.existencias > 0
+          AND categoria.descripcion = ?
+        ORDER BY producto.id_producto DESC
+    ";
+
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('s', $categoria);
+    $stmt->execute();
+
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
 }

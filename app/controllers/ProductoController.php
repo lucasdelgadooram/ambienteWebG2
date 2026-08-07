@@ -3,11 +3,14 @@
 require_once '../app/core/Controller.php';
 
 class ProductoController extends Controller {
+
     private $productoModel;
     private $categoriaModel;
 
     public function __construct() {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('/auth/index');
@@ -18,23 +21,24 @@ class ProductoController extends Controller {
     }
 
     public function catalogo() {
-    $this->view('producto/catalogo', [
-        'productos' =>
-            $this->productoModel->getActive(),
-
-        'css' => [
-            'catalogoStyles.css'
-        ]
-    ]);
-}
+        $this->view('producto/catalogo', [
+            'productos' => $this->productoModel->getActive(),
+            'css' => ['catalogoStyles.css']
+        ]);
+    }
 
     public function index() {
         $this->view('producto/index', [
             'productos' => $this->productoModel->getAll(),
             'categorias' => $this->categoriaModel->getAll(),
-            'css' => ['indexStyles.css', 'adminStyles.css', 'gestionarProductosStyles.css']
+            'css' => [
+                'indexStyles.css',
+                'adminStyles.css',
+                'gestionarProductosStyles.css'
+            ]
         ]);
     }
+
 
     public function create() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

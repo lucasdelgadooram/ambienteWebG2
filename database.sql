@@ -220,6 +220,18 @@ CREATE TABLE resena (
 
 INSERT INTO rol (rol) VALUES ('ADMIN'), ('VENDEDOR'), ('USER');
 
+INSERT INTO categoria (
+  descripcion,
+  ruta_imagen,
+  activo
+) VALUES
+  ('Ropa', NULL, TRUE),
+  ('Accesorios', NULL, TRUE),
+  ('Envoltorios', NULL, TRUE),
+  ('Papeleria', NULL, TRUE),
+  ('Personalizados', NULL, TRUE),
+  ('Otros', NULL, TRUE);
+
 INSERT INTO usuario (
   username,
   password,

@@ -169,4 +169,96 @@ class UserController extends Controller {
         }
         $this->redirect('/user/index');
     }
+
+    public function perfil(){
+        if (!isset($_SESSION['user_id'])) {
+            $this->redirect('/auth/index');
+            return;
+        }
+
+        $usuario = $this->userModel->getById($_SESSION['user_id']);
+
+        if (!$usuario) {
+            die('Usuario no encontrado.');
+        }
+
+        $this->view('usuario/perfil', ['usuario' => $usuario]);
+    }
+
+    public function editarPerfil(){
+        if (!isset($_SESSION['user_id'])) {
+            $this->redirect('/auth/index');
+            return;
+        }
+
+        $idUsuario = $_SESSION['user_id'];
+
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $data = [
+                'username' => trim($_POST['username'] ?? ''),
+                'nombre' => trim($_POST['nombre'] ?? ''),
+                'apellidos' => trim($_POST['apellidos'] ?? ''),
+                'correo' => trim($_POST['correo'] ?? ''),
+                'telefono' => trim($_POST['telefono'] ?? ''),
+                'ruta_imagen' => $_POST['ruta_imagen'] ?? '',
+                'activo' => 1
+            ];
+
+            // Campos obligatorios
+            if (empty($data['username']) || empty($data['nombre']) || empty($data['correo'])) {
+                $usuario = $this->userModel->getById($idUsuario);
+                $this->view('usuario/editPerfil', ['usuario' => $usuario, 'error' => 'Usuario, nombre y correo son obligatorios.']);
+                return;
+            }
+
+            if (!filter_var($data['correo'], FILTER_VALIDATE_EMAIL)) {
+                $usuario = $this->userModel->getById($idUsuario);
+                $this->view('usuario/editPerfil', ['usuario' => $usuario, 'error' => 'Ingrese un correo electrónico válido y con formato.']);
+                return;
+            }
+
+            $existingUser = $this->userModel->getByEmail($data['correo']);
+
+            if ($existingUser &&  $existingUser['id_usuario'] != $idUsuario) {
+                $usuario = $this->userModel->getById($idUsuario);
+                $this->view('usuario/editPerfil', ['usuario' => $usuario,'error' => 'El correo ya está siendo utilizado. necesita otro' ]);
+                return;
+            }
+
+           
+            $existingUsername = $this->userModel->getByUsername($data['username']);
+            if ($existingUsername && $existingUsername['id_usuario'] != $idUsuario) {
+                $usuario = $this->userModel->getById($idUsuario);
+                $this->view('usuario/editPerfil', ['usuario' => $usuario,'error' => 'El nombre de usuario ya está siendo utilizado, necesita otro.']);
+                return;
+            }
+
+        
+            $resultado = $this->userModel->update($idUsuario, $data);
+            if ($resultado) {
+                $_SESSION['username'] = $data['username'];
+                $_SESSION['nombre'] = $data['nombre'];
+                $_SESSION['apellidos'] = $data['apellidos'];
+                $_SESSION['ruta_imagen'] = $data['ruta_imagen'];
+
+                $this->redirect('/user/perfil');
+                return;
+            }
+
+            $usuario = $this->userModel->getById($idUsuario);
+
+            $this->view('usuario/editPerfil', ['usuario' => $usuario, 'error' => 'No se pudo actualizar el perfil.']);
+            return;
+        }
+
+       
+        $usuario = $this->userModel->getById($idUsuario);
+        if (!$usuario) {
+            die('Usuario no encontrado.');
+        }
+
+        $this->view('usuario/editPerfil', [ 'usuario' => $usuario]);
+    }
 }

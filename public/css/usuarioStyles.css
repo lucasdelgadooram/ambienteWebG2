@@ -1,142 +1,239 @@
 
 
-.page-header{
+.page-header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 45px auto 25px;
 
-    display:flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    justify-content:space-between;
+    gap: 20px;
+}
 
-    align-items:center;
+.page-header h2 {
+    margin: 0;
 
-    margin:40px auto 20px;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
 
-    width:90%;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
 
+
+.page-header .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #3daaf3;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 14px;
+
+    padding: 11px 20px;
+
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+
+    box-shadow: 0 5px 12px rgba(61, 170, 243, 0.25);
+
+    transition:
+        background-color 0.3s,
+        color 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+.page-header .btn-primary:hover {
+    background: #ffe27a;
+    color: #000000;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 
 
-.page-header h2{
+.glass-card {
+    width: 90%;
+    max-width: 1200px;
 
-    color:white;
+    margin: 0 auto 50px;
 
-    font-size:32px;
+    background: rgba(255, 255, 255, 0.94);
 
-    font-weight:bold;
+    border-radius: 20px;
 
-    margin:0;
+    overflow: hidden;
 
-}
-
-
-
-.page-header .btn-primary{
-
-    background:#3daaf3;
-    border:none;
-    padding:12px 20px;
-    border-radius:14px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-
-.page-header .btn-primary:hover{
-    background:#ffe27a;
-    color:black;
-    transform:translateY(-3px);
-}
-
-
-.glass-card{
-    width:90%;
-    margin:auto;
-    background:rgba(255,255,255,.9);
-    border-radius:20px;
-    overflow:hidden;
     box-shadow:
-    0 12px 35px rgba(0,0,0,.15);
+        0 12px 35px rgba(0, 0, 0, 0.15);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.glass-card .table {
+    width: 100%;
+
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 
 
-.table{
-    margin:0;
+.glass-card .table thead {
+    background: #3daaf3;
+    color: #ffffff;
 }
 
-.table thead{
-    background:#3daaf3;
-    color:white;
+.glass-card .table thead th {
+    padding: 17px 14px;
 
-}
+    color: #ffffff;
 
+    font-size: 15px;
+    font-weight: bold;
 
-.table thead th{
-    padding:18px;
-    font-size:16px;
-    text-align:center;
-    border:none;
+    text-align: center;
+    vertical-align: middle;
 
-}
+    border: none;
 
-
-.table tbody td{
-    padding:15px;
-    text-align:center;
-    vertical-align:middle;
-
+    white-space: nowrap;
 }
 
 
-.table tbody tr{
-    transition:.3s;
-}
+.glass-card .table tbody td {
+    padding: 15px 14px;
 
+    color: #31566d;
 
-.table tbody tr:hover{
-    background:#eaf7ff;
+    font-size: 14px;
 
-}
+    text-align: center;
+    vertical-align: middle;
 
-
-.actions{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-}
-
-
-.actions .btn{
-    border-radius:10px;
-    padding:8px 14px;
-    font-weight:bold;
-    border:none;
-    transition:.3s;
-}
-
-
-.actions .btn-info{
-    background:#5cbffd;
-    color:white;
+    border-bottom: 1px solid #e1eef5;
 }
 
 
 
-.actions .btn-info:hover{
-    background:#ffe27a;
-    color:black;
-    transform:translateY(-2px);
+.glass-card .table tbody tr {
+    background: #ffffff;
 
+    transition:
+        background-color 0.25s,
+        transform 0.25s;
 }
 
 
-.actions .btn-danger{
-    background:#dc3545;
-    color:white;
+
+
+.glass-card .table tbody tr:nth-child(even) {
+    background: #f7fcff;
 }
 
-.actions .btn-danger:hover{
-    background:#ff6b6b;
-    transform:translateY(-2px);
 
+
+.glass-card .table tbody tr:hover {
+    background: #eaf7ff;
 }
+
+
+
+.glass-card .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+
+.glass-card .table tbody td:first-child {
+    color: #3daaf3;
+    font-weight: bold;
+}
+
+
+.glass-card .table tbody td:nth-child(4) {
+    color: #298ac5;
+    font-weight: bold;
+}
+
+.glass-card .table tbody td:nth-child(5) {
+    color: #52758a;
+}
+
+.actions {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    white-space: nowrap;
+}
+
+
+
+.actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 75px;
+
+    padding: 8px 13px;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+
+    text-decoration: none;
+    transition:
+        background-color 0.3s,
+        color 0.3s,
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+
+.actions .btn-info {
+    background: #5cbffd;
+    color: #ffffff;
+
+    box-shadow: 0 4px 8px rgba(92, 191, 253, 0.2);
+}
+
+.actions .btn-info:hover {
+    background: #ffe27a;
+    color: #000000;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.actions .btn-danger {
+    background: #dc3545;
+    color: #ffffff;
+
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+.actions .btn-danger:hover {
+    background: #ff6b6b;
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 12px rgba(220, 53, 69, 0.2);
+}
+
+

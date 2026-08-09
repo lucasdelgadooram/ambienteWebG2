@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        #aadcfa 0%,
+        #9dd1f1 100%
+    );
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.glass-card {
+    width: 90%;
+    max-width: 500px;
+
+    margin: 70px auto;
+
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.16);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    text-align: center;
+}
+
+
+.glass-card h2 {
+    margin-bottom: 15px;
+
+    color: #298ac5;
+
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+
+.glass-card p {
+    margin-bottom: 30px;
+
+    color: #52758a;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+.glass-card form {
+    text-align: left;
+}
+
+.glass-card .mb-3 {
+    margin-bottom: 22px !important;
+}
+
+
+.glass-card label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #31566d;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.glass-card input[type="email"] {
+    width: 100%;
+    height: 48px;
+
+    padding: 10px 15px;
+
+    background: #ffffff;
+
+    border: 2px solid #d8edf9;
+
+    border-radius: 12px;
+
+    color: #31566d;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+
+.glass-card input[type="email"]::placeholder {
+    color: #9bb4c2;
+}
+
+
+.glass-card input[type="email"]:focus {
+    border-color: #3daaf3;
+
+    box-shadow:
+        0 0 0 4px rgba(61, 170, 243, 0.15);
+}
+
+
+.glass-card button {
+    width: 100%;
+    height: 48px;
+
+    margin-top: 5px;
+
+    background: #3daaf3;
+
+    color: #ffffff;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.glass-card button:hover {
+    background: #ffe27a;
+
+    color: #000000;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 15px rgba(0, 0, 0, 0.12);
+}
+
+
+.glass-card .mt-3 {
+    margin-top: 25px !important;
+}
+
+
+.glass-card .mt-3 a {
+    color: #3daaf3;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+.glass-card .mt-3 a:hover {
+    color: #298ac5;
+
+    text-decoration: underline;
+}
+
+
+.glass-card .alert {
+    border-radius: 12px;
+
+    padding: 12px 15px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+
+    text-align: left;
+}
+
+
+.glass-card .alert-danger {
+    background: #ffe5e8;
+
+    border: 1px solid #ffb8c0;
+
+    color: #b52b3d;
+}
+
+
+
+.glass-card .alert-success {
+    background: #e4f8ed;
+
+    border: 1px solid #a8e3c2;
+
+    color: #217a47;
+}
+
+
+

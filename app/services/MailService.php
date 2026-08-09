@@ -1,61 +1,138 @@
 <?php
 
-    //https://www.hostinger.com/es/tutoriales/enviar-emails-usando-php-mail/
-    require_once '../libraries/PHPMailer/src/Exception.php';
-    require_once '../libraries/PHPMailer/src/PHPMailer.php';
-    require_once '../libraries/PHPMailer/src/SMTP.php';
+require_once __DIR__ . '/../libraries/PHPMailer/src/Exception.php';
+require_once __DIR__ . '/../libraries/PHPMailer/src/PHPMailer.php';
+require_once __DIR__ . '/../libraries/PHPMailer/src/SMTP.php';
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    class MailService
+class MailService
+{
+    public function enviarCorreoRegistro($correo, $token)
     {
+        $mail = new PHPMailer(true);
 
-        public function enviarCorreoRegistro($correo, $token){
+        try {
 
-            $mail = new PHPMailer(true);
+            // Configuración SMTP de Gmail
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
 
-            try{
+            $mail->Username = 'lucasdelgadooram@gmail.com';
+            $mail->Password = 'twojuzalnttfhzxq';
 
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'lucasdelgadooram@gmail.com';
-                $mail->Password = 'twojuzalnttfhzxq';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
-                $mail->CharSet = "UTF-8";
-                $mail->setFrom('lucasdelgadooram@gmail.com','Paluse');
+            // Configuración del correo
+            $mail->CharSet = 'UTF-8';
 
-                $mail->addAddress($correo);
-                $mail->isHTML(true);
-                $mail->Subject = 'Activa tu cuenta';
-                $link = BASE_URL . "/auth/verificar?token=".$token;
+            $mail->setFrom('lucasdelgadooram@gmail.com','Paluse');
 
-                $mail->Body = "
+            $mail->addAddress($correo);
 
-                    <h2>Bienvenido a Paluse</h2>
+            $mail->isHTML(true);
+            $mail->Subject = 'Activa tu cuenta en Paluse';
 
-                    <p>Gracias por registrarte.</p>
+            $link = BASE_URL . '/auth/verificar?token=' . urlencode($token);
 
-                    <p>Haz clic en el siguiente enlace para activar su cuenta en la página Paluse.</p>
+            $mail->Body = "
+                <h2>Bienvenido a Paluse</h2>
 
-                    <a href='$link'>ACTIVAR CUENTA</a>
+                <p>Gracias por registrarte.</p>
 
-                    <br><br>
-                    Este enlace expira en 24 horas.";
+                <p>
+                    Para continuar con tu registro, debes verificar
+                    tu correo electrónico.
+                </p>
 
-                $mail->send();
+                <p>
+                    <a href='$link'>
+                        ACTIVAR CUENTA
+                    </a>
+                </p>
 
-                return true;
+                <p>
+                    Este enlace expirará en 24 horas.
+                </p>
+            ";
 
-            }catch(Exception $e){
+            $mail->send();
 
-                return false;
+            return true;
 
-            }
+        } catch (Exception $e) {
+            error_log('Error PHPMailer: ' . $mail->ErrorInfo);
 
+            return false;
         }
-
     }
+
+    public function enviarCorreoRecuperacion($correo, $token){
+        $mail = new PHPMailer(true);
+
+        try {
+
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+
+            $mail->Username = 'lucasdelgadooram@gmail.com';
+            $mail->Password = 'twojuzalnttfhzxq';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->CharSet = 'UTF-8';
+
+            $mail->setFrom('lucasdelgadooram@gmail.com', 'Paluse' );
+            $mail->addAddress($correo);
+            $mail->isHTML(true);
+
+            $mail->Subject = 'Restablecer contraseña - Paluse';
+
+            $link = BASE_URL .'/auth/cambiarPassword?token='.urlencode($token);
+            $mail->Body = "
+                <h2>Restablecer contraseña</h2>
+
+                <p>
+                    Hemos recibido una solicitud para cambiar su contraseña
+                    la contraseña de tu cuenta en Paluse.
+                </p>
+
+                <p>
+                    Para crear una nueva contraseña, haz clic
+                    en el siguiente enlace:
+                </p>
+
+                <p>
+                    <a href='$link'>
+                        RESTABLECER CONTRASEÑA
+                    </a>
+                </p>
+
+                <p>
+                    Este enlace expirará en 24 horas.
+                </p>
+
+                <p>
+                    Si tú no solicitaste este cambio,
+                    puedes ignorar este correo y borrarlo.
+                </p>
+            ";
+
+            $mail->send();
+
+            return true;
+
+        } catch (Exception $e) {
+
+            error_log('Error PHPMailer recuperación: ' . $mail->ErrorInfo);
+
+            return false;
+        }
+    }
+
+
+}

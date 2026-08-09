@@ -71,10 +71,10 @@
 
 
                 <div class="links">
-                    <a href="<?= BASE_URL ?>/auth/forgotPassword">
+                    <a href="<?= BASE_URL ?>/auth/olvidar">
                         ¿Has olvidado tu contraseña?
                     </a>
-                    <a href="<?= BASE_URL ?>/usuario/create">
+                    <a href="<?= BASE_URL ?>/auth/registro">
                         ¿Aún no tienes cuenta?
                     </a>
                 </div>

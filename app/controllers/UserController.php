@@ -4,6 +4,12 @@ require_once '../app/core/Controller.php';
 class UserController extends Controller {
     private $userModel;
 
+    private function requireAdmin() {
+        if (!$this->tieneRol('ADMIN')) {
+            $this->redirect('/home/about');
+        }
+    }
+
     public function __construct() {
         session_start();
 
@@ -15,11 +21,13 @@ class UserController extends Controller {
     }
 
     public function index() {
+        $this->requireAdmin();
         $users = $this->userModel->getAll();
         $this->view('usuario/index', ['users' => $users]);
     }
 
     public function create() {
+    $this->requireAdmin();
 
     // Cargar los roles para el formulario
     $rolModel = $this->model('Rol');
@@ -88,6 +96,7 @@ class UserController extends Controller {
 }
 
     public function edit($id = null) {
+        $this->requireAdmin();
 
         if(!$id){
             $this->redirect('/user/index');
@@ -161,6 +170,8 @@ class UserController extends Controller {
 }
 
     public function delete($id = null) {
+        $this->requireAdmin();
+
         if ($id) {
             // Evitar que el usuario se elimine a sí mismo
             if ($id != $_SESSION['user_id']) {

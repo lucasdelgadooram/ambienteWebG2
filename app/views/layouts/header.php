@@ -178,7 +178,21 @@
             </li>
 
 
-            <?php if (isset($_SESSION['user_id'])): ?>
+            <?php
+                $esAdmin = false;
+
+                if (isset($_SESSION['roles']) && is_array($_SESSION['roles'])) {
+                    foreach ($_SESSION['roles'] as $rol) {
+                        if (isset($rol['rol']) && $rol['rol'] === 'ADMIN') {
+                            $esAdmin = true;
+                            break;
+                        }
+                    }
+                }
+            ?>
+
+
+            <?php if (isset($_SESSION['user_id']) && $esAdmin): ?>
                 <!-- Administración -->
                 <li class="nav-item dropdown">
 
@@ -217,13 +231,14 @@
 
                 </li>
 
+            <?php endif; ?>
 
+            <?php if (isset($_SESSION['user_id'])): ?>
                 <!-- Cerrar sesión -->
                 <li class="nav-item">
                     <i class="fa-solid fa-door-closed iconoNav2"></i>
                     <a class="nav-link"href="<?= BASE_URL ?>/auth/logout" >Cerrar sesión</a>
                 </li>
-
             <?php endif; ?>
 
         </ul>

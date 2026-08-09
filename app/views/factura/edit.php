@@ -1,3 +1,4 @@
+<?php require_once '../app/views/layouts/head.php'; ?>
 <?php require_once '../app/views/layouts/header.php'; ?>
 
 <div class="container mt-4">

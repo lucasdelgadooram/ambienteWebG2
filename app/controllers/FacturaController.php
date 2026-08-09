@@ -17,6 +17,10 @@ class FacturaController extends Controller {
             $this->redirect('/auth/index');
         }
 
+        if (!$this->tieneRol('ADMIN')) {
+            $this->redirect('/home/about');
+        }
+
         $this->facturaModel = $this->model('Factura');
         $this->usuarioModel = $this->model('User');
     }

@@ -7,6 +7,12 @@ class ProductoController extends Controller {
     private $productoModel;
     private $categoriaModel;
 
+    private function requireAdmin() {
+        if (!$this->tieneRol('ADMIN')) {
+            $this->redirect('/home/about');
+        }
+    }
+
     public function __construct() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -28,6 +34,8 @@ class ProductoController extends Controller {
     }
 
     public function index() {
+        $this->requireAdmin();
+
         $this->view('producto/index', [
             'productos' => $this->productoModel->getAll(),
             'categorias' => $this->categoriaModel->getAll(),
@@ -41,6 +49,8 @@ class ProductoController extends Controller {
 
 
     public function create() {
+        $this->requireAdmin();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = $this->buildProductData();
 
@@ -84,6 +94,8 @@ class ProductoController extends Controller {
     }
 
     public function edit($id = null) {
+        $this->requireAdmin();
+
         if (!$id) {
             $this->redirect('/producto/index');
         }
@@ -141,6 +153,8 @@ class ProductoController extends Controller {
     }
 
     public function delete($id = null) {
+        $this->requireAdmin();
+
         if ($id) {
             $this->productoModel->delete($id);
         }

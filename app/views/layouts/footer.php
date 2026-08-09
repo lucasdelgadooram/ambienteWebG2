@@ -68,7 +68,7 @@
 
             <span>¿Quieres ver toda nuestra historia?</span>
 
-            <a href="<?= BASE_URL ?>/home/about" class="btnFooter">Sigue por aquí</a>
+            <a href="<?= BASE_URL ?>/home/historia" class="btnFooter">Sigue por aquí</a>
 
         </section>
 

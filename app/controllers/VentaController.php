@@ -8,10 +8,16 @@ class VentaController extends Controller {
     private $productoModel;
 
     public function __construct() {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('/auth/index');
+        }
+
+        if (!$this->tieneRol('ADMIN')) {
+            $this->redirect('/home/about');
         }
 
         $this->ventaModel = $this->model('Venta');

@@ -14,7 +14,11 @@ class AuthController extends Controller
 
     public function index(){
         if (isset($_SESSION['user_id'])) {
-            $this->redirect('/user/index');
+            if ($this->tieneRol('ADMIN')) {
+                $this->redirect('/user/index');
+            } else {
+                $this->redirect('/home/about');
+            }
             return;
         }
 
@@ -44,7 +48,11 @@ class AuthController extends Controller
                 $_SESSION['roles'] = $userModel->getRoles($user['id_usuario']);
                 $_SESSION['ruta_imagen'] = $user['ruta_imagen'];
 
-                $this->redirect('/user/index');
+                if ($this->tieneRol('ADMIN')) {
+                    $this->redirect('/user/index');
+                } else {
+                    $this->redirect('/home/about');
+                }
                 return;
             }
 

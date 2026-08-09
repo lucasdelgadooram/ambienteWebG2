@@ -11,11 +11,19 @@ class CategoriaController extends Controller {
     //hace el constructor
     public function __construct() {
         //Inicia sesion
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         //si la sesion no existe, entonces lo manda a loguearse
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('/auth/index');
         }
+
+        if (!$this->tieneRol('ADMIN')) {
+            $this->redirect('/home/about');
+        }
+
         //sino, entonces podra llamar al modelo de categoria
         $this->categoriaModel = $this->model('Categoria');
     }

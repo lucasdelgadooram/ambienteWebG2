@@ -1,6 +1,7 @@
 <?php
+
 class App {
-    protected $controller = 'AuthController';
+    protected $controller = 'HomeController';
     protected $method = 'index';
     protected $params = [];
 
@@ -15,11 +16,9 @@ class App {
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
 
-        if (isset($url[1])) {
-            if (method_exists($this->controller, $url[1])) {
-                $this->method = $url[1];
-                unset($url[1]);
-            }
+        if (isset($url[1]) && method_exists($this->controller, $url[1])) {
+            $this->method = $url[1];
+            unset($url[1]);
         }
 
         $this->params = $url ? array_values($url) : [];

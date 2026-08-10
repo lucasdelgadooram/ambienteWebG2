@@ -259,5 +259,20 @@ SELECT usuario.id_usuario, rol.id_rol
 FROM usuario, rol
 WHERE usuario.username = 'admin'
   AND rol.rol = 'ADMIN';
-    
+
+INSERT INTO categoria (descripcion, ruta_imagen, activo) VALUES
+('Ropa', NULL, 1),
+('Accesorios', NULL, 1),
+('Envoltorios', NULL, 1),
+('Papeleria', NULL, 1),
+('Personalizados', NULL, 1),
+('Otros', NULL, 1);
+
+INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, ruta_imagen, activo) VALUES
+(1, 'Sueta personalizada', 'Sueta con diseño único Paluse. Ideal para regalar.', 12000.00, 25, 'suetaPaluse.jpg', 1),
+(1, 'Peluche personalizado', 'Peluche decorativo con detalle especial.', 8500.00, 15, 'peluchePaluse.jpg', 1),
+(2, 'Taza personalizada', 'Color blanco con diseño personalizado. Perfecta para regalos.', 8500.00, 30, 'taza.jpeg', 1),
+(2, 'Cuadro personalizado', 'Cuadro con borde de madera y diseño a elección.', 7000.00, 20, 'cartelJackson.jpg', 1),
+(3, 'Caja de cartón personalizada', 'Caja con imagen a escoger. Ideal para empaques especiales.', 6000.00, 40, 'cajaDesplegable.jpg', 1),
+(3, 'Combo personalizado', 'Caja tipo cofre, accesorio y relleno. El regalo perfecto.', 11300.00, 10, 'comboRebeca.jpg', 1);
  

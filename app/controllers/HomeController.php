@@ -41,7 +41,7 @@ class HomeController extends Controller {
             'titulo' => 'Sobre Nosotros - Paluse',
             'css' => ['sobreNosotros.css']
         ];
-        $this->view('home/about', $data);
+        $this->view('home/sobreNosotros', $data);
     }
 
     public function soporte() {

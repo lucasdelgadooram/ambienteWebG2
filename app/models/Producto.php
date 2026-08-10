@@ -205,4 +205,50 @@ class Producto {
 
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
+
+    public function getRecent($limite = 8) {
+        $query = "
+            SELECT
+                producto.*,
+                categoria.descripcion AS categoria_descripcion
+            FROM producto
+            INNER JOIN categoria
+                ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.activo = 1
+              AND producto.existencias > 0
+            ORDER BY producto.id_producto DESC
+            LIMIT ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $limite);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getDestacados($limite = 4) {
+        $query = "
+            SELECT
+                producto.*,
+                categoria.descripcion AS categoria_descripcion
+            FROM producto
+            INNER JOIN categoria
+                ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.activo = 1
+              AND producto.existencias > 0
+            ORDER BY RAND()
+            LIMIT ?
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $limite);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }

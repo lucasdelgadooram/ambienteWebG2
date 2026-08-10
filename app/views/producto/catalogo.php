@@ -21,23 +21,6 @@ require_once __DIR__ . '/../layouts/head.php';
         </div>
     </section>
 
-    <section class="catalogo-filtros">
-        <a href="<?= BASE_URL ?>/producto/catalogo" 
-           class="filtro-btn <?= (!isset($data['categoriaActiva']) || empty($data['categoriaActiva'])) && !isset($data['busqueda']) ? 'activo' : '' ?>">
-            Todos
-        </a>
-        <?php if (isset($data['categorias']) && !empty($data['categorias'])): ?>
-            <?php foreach ($data['categorias'] as $categoria): ?>
-                <?php if ($categoria['activo'] == 1): ?>
-                    <a href="<?= BASE_URL ?>/producto/categoria/<?= urlencode($categoria['descripcion']) ?>" 
-                       class="filtro-btn <?= ($data['categoriaActiva'] ?? null) == $categoria['id_categoria'] ? 'activo' : '' ?>">
-                        <?= htmlspecialchars($categoria['descripcion']) ?>
-                    </a>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </section>
-
     <section class="productos-grid">
         <?php if (empty($data['productos'])): ?>
             <div class="sin-productos">

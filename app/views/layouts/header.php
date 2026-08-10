@@ -94,50 +94,43 @@
         <ul class="navbar-nav mx-auto" id="lista" >
 
             <!-- Catálogo -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                    <i class="fa-solid fa-layer-group iconoNav2"></i>
-                    Catálogo
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        <i class="fa-solid fa-layer-group iconoNav2"></i>
+        Catálogo
+    </a>
+
+    <ul class="dropdown-menu">
+
+        <li>
+            <a class="dropdown-item" href="<?= BASE_URL ?>/producto/catalogo">
+                <i class="fa-solid fa-box-open"></i>
+                Ver catálogo
+            </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <?php
+        // Cargar categorías
+        require_once '../app/models/Categoria.php';
+        $categoriaModel = new Categoria();
+        $categoriasMenu = $categoriaModel->getAll();
+        
+        foreach ($categoriasMenu as $cat):
+            if ($cat['activo'] == 1):
+        ?>
+            <li>
+                <a class="dropdown-item" href="<?= BASE_URL ?>/producto/categoria/<?= urlencode($cat['descripcion']) ?>">
+                    <?= htmlspecialchars($cat['descripcion']) ?>
                 </a>
-
-                <ul class="dropdown-menu">
-
-                    <!-- Ver todos los productos -->
-                    <li>
-                        <a class="dropdown-item" href="<?= BASE_URL ?>/producto/catalogo" >
-                            <i class="fa-solid fa-box-open"></i>
-                            Ver catálogo
-                        </a>
-                    </li>
-
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <!-- Ropa -->
-                    <li>
-                        <a class="dropdown-item" href="<?= BASE_URL ?>/producto/catalogo" > Ropa</a>
-                    </li>
-
-                    <!-- Accesorios -->
-                    <li>
-                        <a class="dropdown-item" href="<?= BASE_URL ?>/producto/catalogo">
-                            Accesorios
-                        </a>
-                    </li>
-
-                    <!-- Envoltorios -->
-                    <li>
-                        <a class="dropdown-item" href="<?= BASE_URL ?>/producto/catalogo" >Envoltorios </a>
-                    </li>
-
-                    <!-- Otros -->
-                    <li>
-                        <a class="dropdown-item" href="<?= BASE_URL ?>/producto/catalogo">Otros</a>
-                    </li>
-                </ul>
-
             </li>
+        <?php 
+            endif;
+        endforeach; 
+        ?>
+    </ul>
+</li>
 
 
             <!-- Acerca -->

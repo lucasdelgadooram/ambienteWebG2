@@ -8,7 +8,7 @@
             <div class="carrusel-track" id="carruselTrack">
                 <?php if (!empty($data['productosRecientes'])): ?>
                     <?php foreach ($data['productosRecientes'] as $index => $producto): ?>
-                        <div class="carrusel-slide <?= $index === 0 ? 'active' : '' ?>">
+                        <div class="carrusel-slide <?= $index === 0 ? 'active' : '' ?>" data-index="<?= $index ?>">
                             <div class="carrusel-content">
                                 <div class="carrusel-texto">
                                     <span class="carrusel-etiqueta">Nuevo producto</span>
@@ -29,7 +29,7 @@
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <div class="carrusel-slide active">
+                    <div class="carrusel-slide active" data-index="0">
                         <div class="carrusel-content">
                             <div class="carrusel-texto">
                                 <span class="carrusel-etiqueta">Bienvenido a Paluse</span>
@@ -77,7 +77,18 @@
                     <?php if ($categoria['activo'] == 1): ?>
                         <a href="<?= BASE_URL ?>/producto/categoria/<?= urlencode($categoria['descripcion']) ?>" class="categoria-card">
                             <div class="categoria-icono">
-                                <i class="fa-solid fa-<?= $this->getCategoriaIcono($categoria['descripcion']) ?>"></i>
+                                <?php
+                                $iconos = [
+                                    'Ropa' => 'tshirt',
+                                    'Accesorios' => 'gem',
+                                    'Envoltorios' => 'gift',
+                                    'Papeleria' => 'pen-ruler',
+                                    'Personalizados' => 'paintbrush',
+                                    'Otros' => 'boxes'
+                                ];
+                                $icono = $iconos[$categoria['descripcion']] ?? 'cube';
+                                ?>
+                                <i class="fa-solid fa-<?= $icono ?>"></i>
                             </div>
                             <h3><?= htmlspecialchars($categoria['descripcion']) ?></h3>
                             <span>Ver productos →</span>
@@ -164,5 +175,208 @@
     </section>
 
 </main>
+
+<script>
+(function() {
+    var slides = [];
+    var currentIndex = 0;
+    var intervalo = null;
+    var isTransitioning = false;
+
+    function obtenerSlides() {
+        var track = document.getElementById('carruselTrack');
+        if (!track) return [];
+        return track.querySelectorAll('.carrusel-slide');
+    }
+
+    function actualizarCarrusel() {
+        slides = obtenerSlides();
+        if (slides.length === 0) return;
+        
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+            slides[i].classList.remove('active');
+            slides[i].style.opacity = '0';
+        }
+        
+        if (slides[currentIndex]) {
+            slides[currentIndex].style.display = 'block';
+            slides[currentIndex].style.opacity = '1';
+            slides[currentIndex].classList.add('active');
+        }
+        
+        var indicadores = document.querySelectorAll('.indicador');
+        for (var j = 0; j < indicadores.length; j++) {
+            if (j === currentIndex) {
+                indicadores[j].classList.add('active');
+            } else {
+                indicadores[j].classList.remove('active');
+            }
+        }
+
+        setTimeout(function() {
+            isTransitioning = false;
+        }, 500);
+    }
+
+    function carruselSiguiente() {
+        slides = obtenerSlides();
+        if (slides.length === 0 || isTransitioning) return;
+        currentIndex++;
+        if (currentIndex >= slides.length) {
+            currentIndex = 0;
+        }
+        actualizarCarrusel();
+        reiniciarAutoSlide();
+    }
+
+    function carruselAnterior() {
+        slides = obtenerSlides();
+        if (slides.length === 0 || isTransitioning) return;
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = slides.length - 1;
+        }
+        actualizarCarrusel();
+        reiniciarAutoSlide();
+    }
+
+    function irSlide(index) {
+        slides = obtenerSlides();
+        if (slides.length === 0 || isTransitioning) return;
+        if (index >= 0 && index < slides.length) {
+            currentIndex = index;
+            actualizarCarrusel();
+            reiniciarAutoSlide();
+        }
+    }
+
+    function reiniciarAutoSlide() {
+        if (intervalo) {
+            clearInterval(intervalo);
+            intervalo = null;
+        }
+        slides = obtenerSlides();
+        if (slides.length > 1) {
+            intervalo = setInterval(carruselSiguiente, 5000);
+        }
+    }
+
+    function iniciarCarrusel() {
+        slides = obtenerSlides();
+        if (slides.length === 0) return;
+        
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+            slides[i].classList.remove('active');
+            slides[i].style.opacity = '0';
+        }
+        
+        currentIndex = 0;
+        if (slides[0]) {
+            slides[0].style.display = 'block';
+            slides[0].style.opacity = '1';
+            slides[0].classList.add('active');
+        }
+        
+        var indicadores = document.querySelectorAll('.indicador');
+        for (var j = 0; j < indicadores.length; j++) {
+            if (j === 0) {
+                indicadores[j].classList.add('active');
+            } else {
+                indicadores[j].classList.remove('active');
+            }
+        }
+        
+        reiniciarAutoSlide();
+        console.log('Carrusel iniciado con ' + slides.length + ' slides');
+    }
+
+    function configurarEventos() {
+        var prevBtn = document.getElementById('carruselPrev');
+        var nextBtn = document.getElementById('carruselNext');
+        var indicadores = document.querySelectorAll('.indicador');
+        var container = document.querySelector('.carrusel-container');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                carruselAnterior();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                carruselSiguiente();
+            });
+        }
+
+        indicadores.forEach(function(ind, index) {
+            ind.addEventListener('click', function() {
+                irSlide(index);
+            });
+        });
+
+        if (container) {
+            container.addEventListener('mouseenter', function() {
+                if (intervalo) {
+                    clearInterval(intervalo);
+                    intervalo = null;
+                }
+            });
+            container.addEventListener('mouseleave', function() {
+                reiniciarAutoSlide();
+            });
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') {
+                carruselSiguiente();
+            } else if (e.key === 'ArrowLeft') {
+                carruselAnterior();
+            }
+        });
+
+        var touchStartX = 0;
+        if (container) {
+            container.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            container.addEventListener('touchend', function(e) {
+                var touchEndX = e.changedTouches[0].screenX;
+                var diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        carruselSiguiente();
+                    } else {
+                        carruselAnterior();
+                    }
+                }
+            }, { passive: true });
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            iniciarCarrusel();
+            configurarEventos();
+        });
+    } else {
+        iniciarCarrusel();
+        configurarEventos();
+    }
+
+    window.addEventListener('load', function() {
+        iniciarCarrusel();
+        configurarEventos();
+    });
+})();
+</script>
 
 <?php require_once __DIR__ . '/../layouts/footer.php'; ?>

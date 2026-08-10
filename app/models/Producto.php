@@ -28,28 +28,98 @@ class Producto {
     }
 
     public function getActive() {
-    $query = "
-        SELECT
-            producto.*,
-            categoria.descripcion
-                AS categoria_descripcion
-        FROM producto
-        INNER JOIN categoria
-            ON producto.id_categoria =
-               categoria.id_categoria
-        WHERE producto.activo = 1
-          AND producto.existencias > 0
-        ORDER BY producto.id_producto DESC
-    ";
+        $query = "
+            SELECT
+                producto.*,
+                categoria.descripcion AS categoria_descripcion
+            FROM producto
+            INNER JOIN categoria
+                ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.activo = 1
+              AND producto.existencias > 0
+            ORDER BY producto.id_producto DESC
+        ";
 
-    $result = $this->db->query($query);
+        $result = $this->db->query($query);
 
-    if (!$result) {
-        return [];
+        if (!$result) {
+            return [];
+        }
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    return $result->fetch_all(MYSQLI_ASSOC);
-}
+    public function getActiveByCategoriaId($categoriaId) {
+        $query = "
+            SELECT
+                producto.*,
+                categoria.descripcion AS categoria_descripcion
+            FROM producto
+            INNER JOIN categoria
+                ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.activo = 1
+              AND producto.existencias > 0
+              AND producto.id_categoria = ?
+            ORDER BY producto.id_producto DESC
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $categoriaId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function buscar($termino) {
+        $query = "
+            SELECT
+                producto.*,
+                categoria.descripcion AS categoria_descripcion
+            FROM producto
+            INNER JOIN categoria
+                ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.activo = 1
+              AND producto.existencias > 0
+              AND (producto.descripcion LIKE ? OR producto.detalle LIKE ?)
+            ORDER BY producto.id_producto DESC
+        ";
+
+        $stmt = $this->db->prepare($query);
+        $like = '%' . $termino . '%';
+        $stmt->bind_param('ss', $like, $like);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOfertas() {
+        //Se realiza una simulación de ofertas
+        $query = "
+            SELECT
+                producto.*,
+                categoria.descripcion AS categoria_descripcion,
+                (producto.precio * 0.8) AS precio_oferta,
+                20 AS porcentaje_descuento
+            FROM producto
+            INNER JOIN categoria
+                ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.activo = 1
+              AND producto.existencias > 0
+              AND producto.precio > 10000
+            ORDER BY producto.id_producto DESC
+            LIMIT 6
+        ";
+
+        $result = $this->db->query($query);
+
+        if (!$result) {
+            return [];
+        }
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function getById($id) {
         $query = "SELECT * FROM producto WHERE id_producto = ?";
@@ -116,23 +186,23 @@ class Producto {
     }
 
     public function getActiveByCategoria($categoria) {
-    $query = "
-        SELECT
-            producto.*,
-            categoria.descripcion AS categoria_descripcion
-        FROM producto
-        INNER JOIN categoria
-            ON producto.id_categoria = categoria.id_categoria
-        WHERE producto.activo = 1
-          AND producto.existencias > 0
-          AND categoria.descripcion = ?
-        ORDER BY producto.id_producto DESC
-    ";
+        $query = "
+            SELECT
+                producto.*,
+                categoria.descripcion AS categoria_descripcion
+            FROM producto
+            INNER JOIN categoria
+                ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.activo = 1
+              AND producto.existencias > 0
+              AND categoria.descripcion = ?
+            ORDER BY producto.id_producto DESC
+        ";
 
-    $stmt = $this->db->prepare($query);
-    $stmt->bind_param('s', $categoria);
-    $stmt->execute();
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $categoria);
+        $stmt->execute();
 
-    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-}
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }

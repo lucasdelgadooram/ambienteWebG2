@@ -198,10 +198,6 @@
                         </li>
                     
                         <li>
-                            <a class="dropdown-item"href="<?= BASE_URL ?>/venta/index"><i class="fa-solid fa-cart-shopping"></i>Ventas</a>
-                        </li>
-
-                        <li>
                             <hr class="dropdown-divider">
                         </li>
 

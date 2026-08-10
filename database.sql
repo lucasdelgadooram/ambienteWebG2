@@ -276,3 +276,47 @@ INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, r
 (3, 'Caja de cartón personalizada', 'Caja con imagen a escoger. Ideal para empaques especiales.', 6000.00, 40, 'cajaDesplegable.jpg', 1),
 (3, 'Combo personalizado', 'Caja tipo cofre, accesorio y relleno. El regalo perfecto.', 11300.00, 10, 'comboRebeca.jpg', 1);
  
+-- ============================================
+-- PRODUCTOS PARA CATEGORÍA: PAPELERIA (id_categoria = 4)
+-- ============================================
+INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, ruta_imagen, activo) VALUES
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Papeleria'), 'Cuaderno personalizado', 'Cuaderno con diseño personalizado, ideal para apuntes o regalos.', 4500.00, 30, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Papeleria'), 'Set de tarjetas personalizadas', 'Set de 10 tarjetas con diseño único para ocasiones especiales.', 6500.00, 25, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Papeleria'), 'Calendario personalizado', 'Calendario de pared con fotos y fechas especiales.', 7500.00, 15, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Papeleria'), 'Libreta de notas personalizada', 'Libreta con cubierta personalizada y hojas de calidad.', 3800.00, 40, NULL, 1);
+
+-- ============================================
+-- PRODUCTOS PARA CATEGORÍA: PERSONALIZADOS (id_categoria = 5)
+-- ============================================
+INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, ruta_imagen, activo) VALUES
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Personalizados'), 'Llavero personalizado', 'Llavero metálico con grabado personalizado.', 3500.00, 50, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Personalizados'), 'Imán personalizado', 'Imán para nevera con diseño personalizado.', 2500.00, 60, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Personalizados'), 'Gorros personalizados', 'Gorro con diseño único y personalizado.', 5500.00, 20, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Personalizados'), 'Bolsa ecológica personalizada', 'Bolsa de tela reutilizable con diseño personalizado.', 4800.00, 35, NULL, 1);
+
+-- ============================================
+-- PRODUCTOS PARA CATEGORÍA: OTROS (id_categoria = 6)
+-- ============================================
+INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, ruta_imagen, activo) VALUES
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Otros'), 'Portarretrato personalizado', 'Portarretrato de madera con diseño personalizado.', 6500.00, 18, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Otros'), 'Cojín personalizado', 'Cojín decorativo con diseño personalizado.', 8500.00, 12, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Otros'), 'Taza térmica personalizada', 'Taza térmica con diseño personalizado.', 9500.00, 22, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Otros'), 'Juego de posavasos personalizado', 'Set de 4 posavasos con diseño personalizado.', 4200.00, 28, NULL, 1);
+
+-- ============================================
+-- PRODUCTOS ADICIONALES PARA CATEGORÍAS EXISTENTES
+-- ============================================
+-- Más productos para Ropa
+INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, ruta_imagen, activo) VALUES
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Ropa'), 'Camiseta personalizada', 'Camiseta 100% algodón con diseño personalizado.', 8500.00, 30, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Ropa'), 'Gorra personalizada', 'Gorra con diseño personalizado.', 4500.00, 25, NULL, 1);
+
+-- Más productos para Accesorios
+INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, ruta_imagen, activo) VALUES
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Accesorios'), 'Pulsera personalizada', 'Pulsera con nombre o mensaje personalizado.', 3200.00, 40, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Accesorios'), 'Llavero acrílico personalizado', 'Llavero acrílico con diseño personalizado.', 2800.00, 45, NULL, 1);
+
+-- Más productos para Envoltorios
+INSERT INTO producto (id_categoria, descripcion, detalle, precio, existencias, ruta_imagen, activo) VALUES
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Envoltorios'), 'Bolsa de regalo personalizada', 'Bolsa de regalo con diseño personalizado.', 3200.00, 50, NULL, 1),
+((SELECT id_categoria FROM categoria WHERE descripcion = 'Envoltorios'), 'Etiqueta personalizada para regalo', 'Set de 20 etiquetas con diseño personalizado.', 2800.00, 60, NULL, 1);

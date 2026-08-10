@@ -46,9 +46,6 @@ require_once __DIR__ . '/../layouts/head.php';
                                 ₡<?= number_format($producto['precio'], 0, ',', '.') ?>
                             </strong>
                             <div>
-                                <button class="btn-favorito" data-id="<?= $producto['id_producto'] ?>">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
                                 <a href="<?= BASE_URL ?>/producto/detalle/<?= $producto['id_producto'] ?>">
                                     <i class="fa-regular fa-eye"></i>
                                 </a>

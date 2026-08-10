@@ -17,7 +17,7 @@ class AuthController extends Controller
             if ($this->tieneRol('ADMIN')) {
                 $this->redirect('/user/index');
             } else {
-                $this->redirect('/home/about');
+                $this->redirect('/home/index');
             }
             return;
         }

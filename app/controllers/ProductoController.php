@@ -18,17 +18,80 @@ class ProductoController extends Controller {
             session_start();
         }
 
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/auth/index');
-        }
+        // Lo comenté para que no pida login al entrar al catálogo 
+        // if (!isset($_SESSION['user_id'])) {
+        //     $this->redirect('/auth/index');
+        // }
 
         $this->productoModel = $this->model('Producto');
         $this->categoriaModel = $this->model('Categoria');
     }
 
     public function catalogo() {
+        $categorias = $this->categoriaModel->getAll();
+       
+        $categoriaId = isset($_GET['categoria']) ? (int)$_GET['categoria'] : null;
+        $busqueda = isset($_GET['buscar']) ? trim($_GET['buscar']) : null;
+        $categoriaNombre = null;
+        
+        if ($busqueda) {
+            $productos = $this->productoModel->buscar($busqueda);
+        } elseif ($categoriaId) {
+            $productos = $this->productoModel->getActiveByCategoriaId($categoriaId);
+            $categoria = $this->categoriaModel->getById($categoriaId);
+            if ($categoria) {
+                $categoriaNombre = $categoria['descripcion'];
+            }
+        } else {
+            $productos = $this->productoModel->getActive();
+        }
+
         $this->view('producto/catalogo', [
-            'productos' => $this->productoModel->getActive(),
+            'productos' => $productos,
+            'categorias' => $categorias,
+            'categoriaActiva' => $categoriaId,
+            'categoriaNombre' => $categoriaNombre,
+            'busqueda' => $busqueda,
+            'css' => ['catalogoStyles.css']
+        ]);
+    }
+
+    public function categoria($nombreCategoria = null) {
+        if (!$nombreCategoria) {
+            $this->redirect('/producto/catalogo');
+        }
+
+        $categoria = $this->categoriaModel->getByDescripcion(urldecode($nombreCategoria));
+        
+        if (!$categoria) {
+            $this->redirect('/producto/catalogo');
+        }
+
+        $productos = $this->productoModel->getActiveByCategoriaId($categoria['id_categoria']);
+        $categorias = $this->categoriaModel->getAll();
+
+        $this->view('producto/catalogo', [
+            'productos' => $productos,
+            'categorias' => $categorias,
+            'categoriaActiva' => $categoria['id_categoria'],
+            'categoriaNombre' => $categoria['descripcion'],
+            'css' => ['catalogoStyles.css']
+        ]);
+    }
+
+    public function detalle($id = null) {
+        if (!$id) {
+            $this->redirect('/producto/catalogo');
+        }
+
+        $producto = $this->productoModel->getById($id);
+        
+        if (!$producto || $producto['activo'] == 0) {
+            $this->redirect('/producto/catalogo');
+        }
+
+        $this->view('producto/detalle', [
+            'producto' => $producto,
             'css' => ['catalogoStyles.css']
         ]);
     }
@@ -46,7 +109,6 @@ class ProductoController extends Controller {
             ]
         ]);
     }
-
 
     public function create() {
         $this->requireAdmin();
@@ -192,5 +254,34 @@ class ProductoController extends Controller {
         }
 
         return null;
+    }
+
+    public function ofertas() {
+        $productos = $this->productoModel->getOfertas();
+        $categorias = $this->categoriaModel->getAll();
+
+        $this->view('producto/ofertas', [
+            'productos' => $productos,
+            'categorias' => $categorias,
+            'css' => ['ofertasStyles.css']
+        ]);
+    }
+
+    public function buscar() {
+        $termino = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
+        
+        if (empty($termino)) {
+            $this->redirect('/producto/catalogo');
+        }
+
+        $productos = $this->productoModel->buscar($termino);
+        $categorias = $this->categoriaModel->getAll();
+
+        $this->view('producto/catalogo', [
+            'productos' => $productos,
+            'categorias' => $categorias,
+            'busqueda' => $termino,
+            'css' => ['catalogoStyles.css']
+        ]);
     }
 }

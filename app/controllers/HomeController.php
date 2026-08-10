@@ -59,4 +59,16 @@ class HomeController extends Controller {
         ];
         $this->view('home/historia', $data);
     }
+
+    private function getCategoriaIcono($nombre) {
+        $iconos = [
+            'Ropa' => 'tshirt',
+            'Accesorios' => 'gem',
+            'Envoltorios' => 'gift',
+            'Papeleria' => 'pen-ruler',
+            'Personalizados' => 'paintbrush',
+            'Otros' => 'boxes'
+        ];
+        return $iconos[$nombre] ?? 'cube';
+    }
 }

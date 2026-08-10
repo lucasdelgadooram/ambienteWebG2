@@ -1,15 +1,18 @@
 <?php
+
 class Controller {
+    
     public function model($model) {
-        require_once '../app/models/' . $model . '.php';
+        require_once APPROOT . '/models/' . $model . '.php';
         return new $model();
     }
 
     public function view($view, $data = []) {
-        if (file_exists('../app/views/' . $view . '.php')) {
-            require_once '../app/views/' . $view . '.php';
+        $viewPath = APPROOT . '/views/' . $view . '.php';
+        if (file_exists($viewPath)) {
+            require_once $viewPath;
         } else {
-            die("La vista $view no existe.");
+            die('La vista ' . $view . ' no existe en: ' . $viewPath);
         }
     }
 
@@ -18,20 +21,15 @@ class Controller {
         exit;
     }
 
-    //Tener rol, espera un rol para buscar.
-    public function tieneRol($rolBuscado) {
-    //basicamente que si alguien intenta iniciar sin la variable se session roles entonces retorna falso
-        if (!isset($_SESSION['roles'])) {
-        return false;
+    protected function tieneRol($rolRequerido) {
+        if (!isset($_SESSION['roles']) || !is_array($_SESSION['roles'])) {
+            return false;
         }
-    //aqui compara por cada arreglos y el rol, entonces lo encuentra y retorna true
         foreach ($_SESSION['roles'] as $rol) {
-            if ($rol['rol'] == $rolBuscado) {
+            if (isset($rol['rol']) && $rol['rol'] === $rolRequerido) {
                 return true;
             }
         }
-
         return false;
     }
-    
 }
